@@ -880,7 +880,7 @@ Scenario Outline: ARB-126
     Then I click on text "BACK TO BONDS"
     Then I check I am on "ManageBonds" page
     Then I click on button with value "Search"
-    # ARB-335, search bond
+    # ARB-335,ARB-79 search bond
     And I paste "BondID" value in "SearchInput"
     And I hit Enter
     Then I check I am on "ManageBonds" page

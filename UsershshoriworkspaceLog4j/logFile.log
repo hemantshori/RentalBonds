@@ -1,0 +1,182 @@
+2017-07-24 11:48:24,938 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2017-07-24 11:48:24,953 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2017-07-24 11:48:24,955 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:61157][total kept alive: 0; route allocated: 0 of 2000; total allocated: 0 of 2000]
+2017-07-24 11:48:24,968 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 0][route: {}->http://localhost:61157][total kept alive: 0; route allocated: 1 of 2000; total allocated: 1 of 2000]
+2017-07-24 11:48:24,971 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:61157
+2017-07-24 11:48:24,972 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:61157
+2017-07-24 11:48:24,974 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 138 - Connection established 127.0.0.1:61614<->127.0.0.1:61157
+2017-07-24 11:48:24,975 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.impl.execchain.MainClientExec.execute 255 - Executing request POST /session HTTP/1.1
+2017-07-24 11:48:24,975 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.impl.execchain.MainClientExec.execute 260 - Target auth state: UNCHALLENGED
+2017-07-24 11:48:24,976 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.impl.execchain.MainClientExec.execute 266 - Proxy auth state: UNCHALLENGED
+2017-07-24 11:48:24,977 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.headers.onRequestSubmitted 124 - http-outgoing-0 >> POST /session HTTP/1.1
+2017-07-24 11:48:24,978 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Type: application/json; charset=utf-8
+2017-07-24 11:48:24,978 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Content-Length: 298
+2017-07-24 11:48:24,978 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Host: localhost:61157
+2017-07-24 11:48:24,978 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Connection: Keep-Alive
+2017-07-24 11:48:24,979 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.4.1 (Java/1.8.0_131)
+2017-07-24 11:48:24,980 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2017-07-24 11:48:24,980 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "POST /session HTTP/1.1[\r][\n]"
+2017-07-24 11:48:24,980 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Type: application/json; charset=utf-8[\r][\n]"
+2017-07-24 11:48:24,981 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Content-Length: 298[\r][\n]"
+2017-07-24 11:48:24,981 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Host: localhost:61157[\r][\n]"
+2017-07-24 11:48:24,981 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2017-07-24 11:48:24,982 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.4.1 (Java/1.8.0_131)[\r][\n]"
+2017-07-24 11:48:24,982 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2017-07-24 11:48:24,982 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.wire.wire 72 - http-outgoing-0 >> "[\r][\n]"
+2017-07-24 11:48:24,983 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.wire.wire 86 - http-outgoing-0 >> "{"desiredCapabilities":{"browserName":"chrome","chromeOptions":{"args":["test-type","start-maximized","--js-flags=--expose-gc","--enable-precise-memory-info","--disable-popup-blocking","--disable-default-apps","test-type=browser","disable-infobars"],"extensions":[]},"version":"","platform":"ANY"}}"
+2017-07-24 11:48:26,479 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.wire.wire 72 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2017-07-24 11:48:26,480 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Length:750[\r][\n]"
+2017-07-24 11:48:26,480 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Content-Type:application/json; charset=utf-8[\r][\n]"
+2017-07-24 11:48:26,481 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.wire.wire 72 - http-outgoing-0 << "Connection:close[\r][\n]"
+2017-07-24 11:48:26,481 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.wire.wire 72 - http-outgoing-0 << "[\r][\n]"
+2017-07-24 11:48:26,481 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.wire.wire 86 - http-outgoing-0 << "{"sessionId":"b84aecf0d6740c27e880f54f8c45b334","status":0,"value":{"acceptSslCerts":true,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"browserName":"chrome","chrome":{"chromedriverVersion":"2.25.426923 (0390b88869384d6eb0d5d09729679f934aab9eed)","userDataDir":"C:\\Users\\hshori\\AppData\\Local\\Temp\\scoped_dir9852_13566"},"cssSelectorsEnabled":true,"databaseEnabled":false,"handlesAlerts":true,"hasTouchScreen":false,"javascriptEnabled":true,"locationContextEnabled":true,"mobileEmulationEnabled":false,"nativeEvents":true,"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platform":"Windows NT","rotatable":false,"takesHeapSnapshot":true,"takesScreenshot":true,"version":"59.0.3071.115","webStorageEnabled":true}}"
+2017-07-24 11:48:26,486 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.headers.onResponseReceived 113 - http-outgoing-0 << HTTP/1.1 200 OK
+2017-07-24 11:48:26,486 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Length:750
+2017-07-24 11:48:26,486 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Content-Type:application/json; charset=utf-8
+2017-07-24 11:48:26,487 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-0 << Connection:close
+2017-07-24 11:48:26,501 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown 87 - http-outgoing-0: Shutdown connection
+2017-07-24 11:48:26,502 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.impl.execchain.MainClientExec.abortConnection 128 - Connection discarded
+2017-07-24 11:48:26,502 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.close 79 - http-outgoing-0: Close connection
+2017-07-24 11:48:26,503 DEBUG [Forwarding newSession on session null to remote] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 0][route: {}->http://localhost:61157][total kept alive: 0; route allocated: 0 of 2000; total allocated: 0 of 2000]
+2017-07-24 11:48:27,708 DEBUG [main] - org.apache.http.impl.conn.BasicClientConnectionManager.getConnection 160 - Get connection for route {}->http://www.google.com:80
+2017-07-24 11:48:27,775 DEBUG [main] - org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection 174 - Connecting to www.google.com:80
+2017-07-24 11:48:27,809 DEBUG [main] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: ignoreCookies
+2017-07-24 11:48:27,811 DEBUG [main] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2017-07-24 11:48:27,812 DEBUG [main] - org.apache.http.client.protocol.RequestTargetAuthentication.process 78 - Target auth state: UNCHALLENGED
+2017-07-24 11:48:27,814 DEBUG [main] - org.apache.http.client.protocol.RequestProxyAuthentication.process 87 - Proxy auth state: UNCHALLENGED
+2017-07-24 11:48:27,815 DEBUG [main] - org.apache.http.impl.client.DefaultHttpClient.tryExecute 683 - Attempt 1 to execute request
+2017-07-24 11:48:27,816 DEBUG [main] - org.apache.http.impl.conn.DefaultClientConnection.sendRequestHeader 268 - Sending request: GET / HTTP/1.1
+2017-07-24 11:48:27,818 DEBUG [main] - org.apache.http.wire.wire 72 -  >> "GET / HTTP/1.1[\r][\n]"
+2017-07-24 11:48:27,819 DEBUG [main] - org.apache.http.wire.wire 72 -  >> "Accept: */*[\r][\n]"
+2017-07-24 11:48:27,820 DEBUG [main] - org.apache.http.wire.wire 72 -  >> "Content-Length: 0[\r][\n]"
+2017-07-24 11:48:27,820 DEBUG [main] - org.apache.http.wire.wire 72 -  >> "Host: www.google.com[\r][\n]"
+2017-07-24 11:48:27,821 DEBUG [main] - org.apache.http.wire.wire 72 -  >> "Connection: Keep-Alive[\r][\n]"
+2017-07-24 11:48:27,822 DEBUG [main] - org.apache.http.wire.wire 72 -  >> "User-Agent: Apache-HttpClient/4.4.1 (Java/1.8.0_131)[\r][\n]"
+2017-07-24 11:48:27,823 DEBUG [main] - org.apache.http.wire.wire 72 -  >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2017-07-24 11:48:27,823 DEBUG [main] - org.apache.http.wire.wire 72 -  >> "[\r][\n]"
+2017-07-24 11:48:27,824 DEBUG [main] - org.apache.http.headers.sendRequestHeader 272 - >> GET / HTTP/1.1
+2017-07-24 11:48:27,826 DEBUG [main] - org.apache.http.headers.sendRequestHeader 275 - >> Accept: */*
+2017-07-24 11:48:27,827 DEBUG [main] - org.apache.http.headers.sendRequestHeader 275 - >> Content-Length: 0
+2017-07-24 11:48:27,828 DEBUG [main] - org.apache.http.headers.sendRequestHeader 275 - >> Host: www.google.com
+2017-07-24 11:48:27,828 DEBUG [main] - org.apache.http.headers.sendRequestHeader 275 - >> Connection: Keep-Alive
+2017-07-24 11:48:27,829 DEBUG [main] - org.apache.http.headers.sendRequestHeader 275 - >> User-Agent: Apache-HttpClient/4.4.1 (Java/1.8.0_131)
+2017-07-24 11:48:27,830 DEBUG [main] - org.apache.http.headers.sendRequestHeader 275 - >> Accept-Encoding: gzip,deflate
+2017-07-24 11:48:27,881 DEBUG [main] - org.apache.http.wire.wire 72 -  << "HTTP/1.1 302 Found[\r][\n]"
+2017-07-24 11:48:27,883 DEBUG [main] - org.apache.http.wire.wire 72 -  << "Cache-Control: private[\r][\n]"
+2017-07-24 11:48:27,884 DEBUG [main] - org.apache.http.wire.wire 72 -  << "Content-Type: text/html; charset=UTF-8[\r][\n]"
+2017-07-24 11:48:27,885 DEBUG [main] - org.apache.http.wire.wire 72 -  << "Referrer-Policy: no-referrer[\r][\n]"
+2017-07-24 11:48:27,886 DEBUG [main] - org.apache.http.wire.wire 72 -  << "Location: http://www.google.com.au/?gfe_rd=cr&ei=8VF1WZTRB9PN8ge5s5_QDA[\r][\n]"
+2017-07-24 11:48:27,887 DEBUG [main] - org.apache.http.wire.wire 72 -  << "Content-Length: 262[\r][\n]"
+2017-07-24 11:48:27,889 DEBUG [main] - org.apache.http.wire.wire 72 -  << "Date: Mon, 24 Jul 2017 01:48:33 GMT[\r][\n]"
+2017-07-24 11:48:27,890 DEBUG [main] - org.apache.http.wire.wire 72 -  << "[\r][\n]"
+2017-07-24 11:48:27,891 DEBUG [main] - org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader 253 - Receiving response: HTTP/1.1 302 Found
+2017-07-24 11:48:27,892 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 256 - << HTTP/1.1 302 Found
+2017-07-24 11:48:27,892 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << Cache-Control: private
+2017-07-24 11:48:27,892 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << Content-Type: text/html; charset=UTF-8
+2017-07-24 11:48:27,893 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << Referrer-Policy: no-referrer
+2017-07-24 11:48:27,893 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << Location: http://www.google.com.au/?gfe_rd=cr&ei=8VF1WZTRB9PN8ge5s5_QDA
+2017-07-24 11:48:27,894 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << Content-Length: 262
+2017-07-24 11:48:27,894 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << Date: Mon, 24 Jul 2017 01:48:33 GMT
+2017-07-24 11:48:27,896 DEBUG [main] - org.apache.http.impl.client.DefaultHttpClient.execute 510 - Connection can be kept alive indefinitely
+2017-07-24 11:48:27,896 DEBUG [main] - org.apache.http.impl.client.DefaultRedirectStrategy.getLocationURI 142 - Redirect requested to location 'http://www.google.com.au/?gfe_rd=cr&ei=8VF1WZTRB9PN8ge5s5_QDA'
+2017-07-24 11:48:27,899 DEBUG [main] - org.apache.http.impl.client.DefaultHttpClient.handleResponse 1096 - Resetting target auth state
+2017-07-24 11:48:27,900 DEBUG [main] - org.apache.http.impl.client.DefaultHttpClient.handleResponse 1112 - Redirecting to 'http://www.google.com.au/?gfe_rd=cr&ei=8VF1WZTRB9PN8ge5s5_QDA' via {}->http://www.google.com.au:80
+2017-07-24 11:48:27,900 DEBUG [main] - org.apache.http.wire.wire 72 -  << "<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">[\n]"
+2017-07-24 11:48:27,901 DEBUG [main] - org.apache.http.wire.wire 72 -  << "<TITLE>302 Moved</TITLE></HEAD><BODY>[\n]"
+2017-07-24 11:48:27,901 DEBUG [main] - org.apache.http.wire.wire 72 -  << "<H1>302 Moved</H1>[\n]"
+2017-07-24 11:48:27,901 DEBUG [main] - org.apache.http.wire.wire 72 -  << "The document has moved[\n]"
+2017-07-24 11:48:27,902 DEBUG [main] - org.apache.http.wire.wire 72 -  << "<A HREF="http://www.google.com.au/?gfe_rd=cr&amp;ei=8VF1WZTRB9PN8ge5s5_QDA">here</A>.[\r][\n]"
+2017-07-24 11:48:27,902 DEBUG [main] - org.apache.http.wire.wire 72 -  << "</BODY></HTML>[\r][\n]"
+2017-07-24 11:48:27,903 DEBUG [main] - org.apache.http.impl.conn.BasicClientConnectionManager.releaseConnection 198 - Releasing connection org.apache.http.impl.conn.ManagedClientConnectionImpl@71870da7
+2017-07-24 11:48:27,903 DEBUG [main] - org.apache.http.impl.conn.BasicClientConnectionManager.releaseConnection 223 - Connection can be kept alive indefinitely
+2017-07-24 11:48:27,903 DEBUG [main] - org.apache.http.impl.conn.BasicClientConnectionManager.getConnection 160 - Get connection for route {}->http://www.google.com.au:80
+2017-07-24 11:48:27,904 DEBUG [main] - org.apache.http.impl.conn.DefaultClientConnection.close 176 - Connection 0.0.0.0:61623<->216.58.199.68:80 closed
+2017-07-24 11:48:28,183 DEBUG [main] - org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection 174 - Connecting to www.google.com.au:80
+2017-07-24 11:48:28,202 DEBUG [main] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: ignoreCookies
+2017-07-24 11:48:28,203 DEBUG [main] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2017-07-24 11:48:28,204 DEBUG [main] - org.apache.http.client.protocol.RequestTargetAuthentication.process 78 - Target auth state: UNCHALLENGED
+2017-07-24 11:48:28,205 DEBUG [main] - org.apache.http.client.protocol.RequestProxyAuthentication.process 87 - Proxy auth state: UNCHALLENGED
+2017-07-24 11:48:28,205 DEBUG [main] - org.apache.http.impl.client.DefaultHttpClient.tryExecute 683 - Attempt 2 to execute request
+2017-07-24 11:48:28,206 DEBUG [main] - org.apache.http.impl.conn.DefaultClientConnection.sendRequestHeader 268 - Sending request: GET /?gfe_rd=cr&ei=8VF1WZTRB9PN8ge5s5_QDA HTTP/1.1
+2017-07-24 11:48:28,207 DEBUG [main] - org.apache.http.wire.wire 72 -  >> "GET /?gfe_rd=cr&ei=8VF1WZTRB9PN8ge5s5_QDA HTTP/1.1[\r][\n]"
+2017-07-24 11:48:28,207 DEBUG [main] - org.apache.http.wire.wire 72 -  >> "Accept: */*[\r][\n]"
+2017-07-24 11:48:28,208 DEBUG [main] - org.apache.http.wire.wire 72 -  >> "Host: www.google.com.au[\r][\n]"
+2017-07-24 11:48:28,209 DEBUG [main] - org.apache.http.wire.wire 72 -  >> "Connection: Keep-Alive[\r][\n]"
+2017-07-24 11:48:28,209 DEBUG [main] - org.apache.http.wire.wire 72 -  >> "User-Agent: Apache-HttpClient/4.4.1 (Java/1.8.0_131)[\r][\n]"
+2017-07-24 11:48:28,210 DEBUG [main] - org.apache.http.wire.wire 72 -  >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2017-07-24 11:48:28,211 DEBUG [main] - org.apache.http.wire.wire 72 -  >> "[\r][\n]"
+2017-07-24 11:48:28,211 DEBUG [main] - org.apache.http.headers.sendRequestHeader 272 - >> GET /?gfe_rd=cr&ei=8VF1WZTRB9PN8ge5s5_QDA HTTP/1.1
+2017-07-24 11:48:28,212 DEBUG [main] - org.apache.http.headers.sendRequestHeader 275 - >> Accept: */*
+2017-07-24 11:48:28,212 DEBUG [main] - org.apache.http.headers.sendRequestHeader 275 - >> Host: www.google.com.au
+2017-07-24 11:48:28,213 DEBUG [main] - org.apache.http.headers.sendRequestHeader 275 - >> Connection: Keep-Alive
+2017-07-24 11:48:28,224 DEBUG [main] - org.apache.http.headers.sendRequestHeader 275 - >> User-Agent: Apache-HttpClient/4.4.1 (Java/1.8.0_131)
+2017-07-24 11:48:28,225 DEBUG [main] - org.apache.http.headers.sendRequestHeader 275 - >> Accept-Encoding: gzip,deflate
+2017-07-24 11:48:28,476 DEBUG [main] - org.apache.http.wire.wire 72 -  << "HTTP/1.1 200 OK[\r][\n]"
+2017-07-24 11:48:28,477 DEBUG [main] - org.apache.http.wire.wire 72 -  << "Date: Mon, 24 Jul 2017 01:48:33 GMT[\r][\n]"
+2017-07-24 11:48:28,477 DEBUG [main] - org.apache.http.wire.wire 72 -  << "Expires: -1[\r][\n]"
+2017-07-24 11:48:28,478 DEBUG [main] - org.apache.http.wire.wire 72 -  << "Cache-Control: private, max-age=0[\r][\n]"
+2017-07-24 11:48:28,478 DEBUG [main] - org.apache.http.wire.wire 72 -  << "Content-Type: text/html; charset=ISO-8859-1[\r][\n]"
+2017-07-24 11:48:28,479 DEBUG [main] - org.apache.http.wire.wire 72 -  << "P3P: CP="This is not a P3P policy! See https://www.google.com/support/accounts/answer/151657?hl=en for more info."[\r][\n]"
+2017-07-24 11:48:28,479 DEBUG [main] - org.apache.http.wire.wire 72 -  << "Content-Encoding: gzip[\r][\n]"
+2017-07-24 11:48:28,480 DEBUG [main] - org.apache.http.wire.wire 72 -  << "Server: gws[\r][\n]"
+2017-07-24 11:48:28,480 DEBUG [main] - org.apache.http.wire.wire 72 -  << "Content-Length: 4513[\r][\n]"
+2017-07-24 11:48:28,480 DEBUG [main] - org.apache.http.wire.wire 72 -  << "X-XSS-Protection: 1; mode=block[\r][\n]"
+2017-07-24 11:48:28,480 DEBUG [main] - org.apache.http.wire.wire 72 -  << "X-Frame-Options: SAMEORIGIN[\r][\n]"
+2017-07-24 11:48:28,481 DEBUG [main] - org.apache.http.wire.wire 72 -  << "Set-Cookie: NID=108=pMqCc_ZeC1nQMCoG_Yg8qA6lIe_hW7F0vYbTo9bXkOwxI9yZWXwasJ4cPtqkYfSXxIvqTIYDzZHyKH4t0nfxktiaf11jNrDff8HgKOsHLYMi99TeF8kofW3qHpf-b1MR; expires=Tue, 23-Jan-2018 01:48:33 GMT; path=/; domain=.google.com.au; HttpOnly[\r][\n]"
+2017-07-24 11:48:28,481 DEBUG [main] - org.apache.http.wire.wire 72 -  << "[\r][\n]"
+2017-07-24 11:48:28,481 DEBUG [main] - org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader 253 - Receiving response: HTTP/1.1 200 OK
+2017-07-24 11:48:28,482 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 256 - << HTTP/1.1 200 OK
+2017-07-24 11:48:28,482 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << Date: Mon, 24 Jul 2017 01:48:33 GMT
+2017-07-24 11:48:28,482 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << Expires: -1
+2017-07-24 11:48:28,483 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << Cache-Control: private, max-age=0
+2017-07-24 11:48:28,483 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << Content-Type: text/html; charset=ISO-8859-1
+2017-07-24 11:48:28,483 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << P3P: CP="This is not a P3P policy! See https://www.google.com/support/accounts/answer/151657?hl=en for more info."
+2017-07-24 11:48:28,483 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << Content-Encoding: gzip
+2017-07-24 11:48:28,483 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << Server: gws
+2017-07-24 11:48:28,484 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << Content-Length: 4513
+2017-07-24 11:48:28,484 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << X-XSS-Protection: 1; mode=block
+2017-07-24 11:48:28,484 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << X-Frame-Options: SAMEORIGIN
+2017-07-24 11:48:28,484 DEBUG [main] - org.apache.http.headers.receiveResponseHeader 259 - << Set-Cookie: NID=108=pMqCc_ZeC1nQMCoG_Yg8qA6lIe_hW7F0vYbTo9bXkOwxI9yZWXwasJ4cPtqkYfSXxIvqTIYDzZHyKH4t0nfxktiaf11jNrDff8HgKOsHLYMi99TeF8kofW3qHpf-b1MR; expires=Tue, 23-Jan-2018 01:48:33 GMT; path=/; domain=.google.com.au; HttpOnly
+2017-07-24 11:48:28,486 DEBUG [main] - org.apache.http.impl.client.DefaultHttpClient.execute 510 - Connection can be kept alive indefinitely
+2017-07-24 11:48:28,512 DEBUG [main] - com.jayway.restassured.internal.RequestSpecificationImpl$RestAssuredHttpBuilder.parseResponse 543 - Parsing response as: text/html; charset=ISO-8859-1
+2017-07-24 11:48:28,513 DEBUG [main] - org.apache.http.wire.wire 86 -  << "[0x1f]"
+2017-07-24 11:48:28,513 DEBUG [main] - org.apache.http.wire.wire 86 -  << "[0x8b]"
+2017-07-24 11:48:28,513 DEBUG [main] - org.apache.http.wire.wire 86 -  << "[0x8]"
+2017-07-24 11:48:28,513 DEBUG [main] - org.apache.http.wire.wire 86 -  << "[0x0]"
+2017-07-24 11:48:28,514 DEBUG [main] - org.apache.http.wire.wire 86 -  << "[0x0][0x0][0x0][0x0][0x2][0xff]"
+2017-07-24 11:48:28,514 DEBUG [main] - com.jayway.restassured.internal.RequestSpecificationImpl$RestAssuredHttpBuilder.parseResponse 546 - Parsed data to instance of: class org.apache.http.conn.EofSensorInputStream
+2017-07-24 11:48:28,654 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.client.protocol.RequestAddCookies.process 122 - CookieSpec selected: default
+2017-07-24 11:48:28,655 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.client.protocol.RequestAuthCache.process 76 - Auth cache not set in the context
+2017-07-24 11:48:28,655 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.requestConnection 249 - Connection request: [route: {}->http://localhost:61157][total kept alive: 0; route allocated: 0 of 2000; total allocated: 0 of 2000]
+2017-07-24 11:48:28,656 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.leaseConnection 282 - Connection leased: [id: 1][route: {}->http://localhost:61157][total kept alive: 0; route allocated: 1 of 2000; total allocated: 1 of 2000]
+2017-07-24 11:48:28,656 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.impl.execchain.MainClientExec.execute 234 - Opening connection {}->http://localhost:61157
+2017-07-24 11:48:28,657 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 131 - Connecting to localhost/127.0.0.1:61157
+2017-07-24 11:48:28,658 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect 138 - Connection established 127.0.0.1:61627<->127.0.0.1:61157
+2017-07-24 11:48:28,658 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.impl.execchain.MainClientExec.execute 255 - Executing request DELETE /session/b84aecf0d6740c27e880f54f8c45b334 HTTP/1.1
+2017-07-24 11:48:28,658 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.impl.execchain.MainClientExec.execute 260 - Target auth state: UNCHALLENGED
+2017-07-24 11:48:28,658 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.impl.execchain.MainClientExec.execute 266 - Proxy auth state: UNCHALLENGED
+2017-07-24 11:48:28,659 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.headers.onRequestSubmitted 124 - http-outgoing-1 >> DELETE /session/b84aecf0d6740c27e880f54f8c45b334 HTTP/1.1
+2017-07-24 11:48:28,660 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-1 >> Host: localhost:61157
+2017-07-24 11:48:28,660 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-1 >> Connection: Keep-Alive
+2017-07-24 11:48:28,660 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-1 >> User-Agent: Apache-HttpClient/4.4.1 (Java/1.8.0_131)
+2017-07-24 11:48:28,660 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.headers.onRequestSubmitted 127 - http-outgoing-1 >> Accept-Encoding: gzip,deflate
+2017-07-24 11:48:28,661 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.wire.wire 72 - http-outgoing-1 >> "DELETE /session/b84aecf0d6740c27e880f54f8c45b334 HTTP/1.1[\r][\n]"
+2017-07-24 11:48:28,661 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.wire.wire 72 - http-outgoing-1 >> "Host: localhost:61157[\r][\n]"
+2017-07-24 11:48:28,661 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.wire.wire 72 - http-outgoing-1 >> "Connection: Keep-Alive[\r][\n]"
+2017-07-24 11:48:28,662 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.wire.wire 72 - http-outgoing-1 >> "User-Agent: Apache-HttpClient/4.4.1 (Java/1.8.0_131)[\r][\n]"
+2017-07-24 11:48:28,662 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.wire.wire 72 - http-outgoing-1 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2017-07-24 11:48:28,662 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.wire.wire 72 - http-outgoing-1 >> "[\r][\n]"
+2017-07-24 11:48:28,745 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.wire.wire 72 - http-outgoing-1 << "HTTP/1.1 200 OK[\r][\n]"
+2017-07-24 11:48:28,746 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.wire.wire 72 - http-outgoing-1 << "Content-Length:72[\r][\n]"
+2017-07-24 11:48:28,746 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.wire.wire 72 - http-outgoing-1 << "Content-Type:application/json; charset=utf-8[\r][\n]"
+2017-07-24 11:48:28,746 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.wire.wire 72 - http-outgoing-1 << "Connection:close[\r][\n]"
+2017-07-24 11:48:28,746 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.wire.wire 72 - http-outgoing-1 << "[\r][\n]"
+2017-07-24 11:48:28,747 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.wire.wire 86 - http-outgoing-1 << "{"sessionId":"b84aecf0d6740c27e880f54f8c45b334","status":0,"value":null}"
+2017-07-24 11:48:28,747 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.headers.onResponseReceived 113 - http-outgoing-1 << HTTP/1.1 200 OK
+2017-07-24 11:48:28,747 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-1 << Content-Length:72
+2017-07-24 11:48:28,748 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-1 << Content-Type:application/json; charset=utf-8
+2017-07-24 11:48:28,748 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.headers.onResponseReceived 116 - http-outgoing-1 << Connection:close
+2017-07-24 11:48:28,748 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.shutdown 87 - http-outgoing-1: Shutdown connection
+2017-07-24 11:48:28,749 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.impl.execchain.MainClientExec.abortConnection 128 - Connection discarded
+2017-07-24 11:48:28,750 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.impl.conn.DefaultManagedHttpClientConnection.close 79 - http-outgoing-1: Close connection
+2017-07-24 11:48:28,750 DEBUG [Forwarding quit on session b84aecf0d6740c27e880f54f8c45b334 to remote] - org.apache.http.impl.conn.PoolingHttpClientConnectionManager.releaseConnection 320 - Connection released: [id: 1][route: {}->http://localhost:61157][total kept alive: 0; route allocated: 0 of 2000; total allocated: 0 of 2000]

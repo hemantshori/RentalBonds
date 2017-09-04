@@ -1,101 +1,76 @@
 Feature: Wip
 
   @wip
-  Scenario Outline: ARB-139: As an RBU Team Leader, I want to reactivate a user within RBU or ACT Housing so that they can access the portal again
+   Scenario Outline: ARB-333: As an aagent admin, property manager, lessor, I want to pay a single Bond.
     Given I want to login to portal "<PortalName>"
-    And I wait for "6000" milliseconds
     And I check I am on "Login" page
     And I enter the details as
       | Fields   | Value      |
       | Email    | <email>    |
       | Password | <Password> |
     And I hit Enter
-    Then I click on text "Manage Users"
-    Then I check that table "RealEstateAgentTable_Wrapper" with row containing "<email_test>" has the following
-      | Fields | Value           |
-
-      | item1  | <email_test>    |
+    And I check I am on "ManageBonds" page
+    Then I click on text "Lodge Bond"
+    Then I check I am on "Bond Lodgement Premise" page
+    Then I click on text "ENTER MANUAL ADDRESS"
+    And I wait for "2000" milliseconds
+    And I enter the details as
+      | Fields           | Value                               |
+      | OneLineAddress   | 10 FLORA AVE, BADGER CREEK VIC 3777 |
+      | StreetNumber     |                                  13 |
+      | StreetName       | Shori                               |
+      | Suburb           | Murrumbeena                         |
+      | Postcode         |                                1111 |
+      | NumberOfBedrooms |                                  13 |
+    Then I select "Separated House" from "DwellingType"
+    And I select "Residential" from "OccupancyType"
+    And I enter the details as
+      | Fields             | Value |
+      | TotalBondAmount    |   400 |
+      | WeeklyRentalAmount |   400 |
+    And I select "Residential" from "OccupancyType"
+    Then I click on button with value "Next"
+    Then I check I am on "Bond Lodgement Parties" page
+    And I enter the details as
+      | Fields          | Value                              |
+      | TenantFirstName | TenantFirstName                    |
+      | TenantLastName  | TenantLastName                     |
+      | TenantEmail     | TenantEmail@TEST.com               |
+      | TenantPhone     |                         1234567890 |
+      | LessorFirstName | LessorFirstName                    |
+      | LessorLastName  | LessorLastName                     |
+      | LessorEmail     | LessorEmail@TeST.com               |
+      | LessorPhone     |                         0987654321 |
+      | PostalAddress   | 10 FLORA AVE, BADGER CREEK VIC 3777 |
+    Then I click on button with value "Next"
+    Then I check I am on "Bond Lodgement Summary" page
+    Then I click on button with value "Next"
+    And I wait for "1000" milliseconds
+    Then I see text "Please confirm your bond details are correct." displayed
+    Then I click on button "ConfirmCheck"
+    Then I click on button with value "Next"
+    Then I check I am on "Bond Lodgement Confirmation" page
     
-    #Scenario 3: RBU Team Leader does not confirm reactivation
-    Then I click on text "<email_test>"
-    Then I wait for "6000" milliseconds
-    Then I switch to frame "0"
-    Then I click on button with value "EDIT"
-    Then I wait for "6000" milliseconds
-    Then I click on button with value "Active"
-    Then I click on button with value "Save"
-    Then I wait for "6000" milliseconds
-    Then I see text "Are you sure you want to reactivate this user?" displayed
-    Then I click on button with value "No"
-    Then I wait for "6000" milliseconds
+    #Scenario 1
+      Then I click on button with value "View Payment Info"
+    And I wait for "2000" milliseconds
+    Then I check I am on "Bond Payment View" page
+    Then "<Item>" is displayed as "<ItemName>"
+      | Fields | Value            |
+      | item1  | BACK TO BONDS  |
+      | item2  | Reference Code     |
+    
+      | item4  | BSB              |
+      | item5  | Account Number   |
+        #Scenario 2
     Then I click on button with value "Cancel"
-    Then I check that table "RealEstateAgentTable_Wrapper" with row containing "<email_test>" has the following
-      | Fields | Value           |
-      | item1  | Nitin           |
-      | item1  | Paul            |
-      | item1  | <email_test>    |
-      | item1  | RBU Team Leader |
-      | item1  | Inactive        |
-    #Scenario 1: RBU Team Leader reactivates user account
-    Then I click on text "<email_test>"
-    Then I wait for "6000" milliseconds
-    Then I switch to frame "0"
-    Then I click on button with value "EDIT"
-    Then I wait for "6000" milliseconds
-    Then I click on button with value "Active"
-    Then I click on button with value "Save"
-    Then I wait for "6000" milliseconds
-    #
-    Then I see text "Are you sure you want to reactivate this user?" displayed
-    Then I click on button with value "Yes"
-    Then I wait for "6000" milliseconds
-    Then I see text "Nitin Paul's details have been successfully updated." displayed
-    Then I check that table "RealEstateAgentTable_Wrapper" with row containing "<email_test>" has the following
-      | Fields | Value           |
-      | item1  | Nitin           |
-      | item1  | Paul            |
-      | item1  | <email_test>    |
-      | item1  | RBU Team Leader |
-      | item1  | Active          |
-    #Scenario 2: RBU Team Leader confirms reactivation
-    Then I click on text "Sign Out"
-    Given I want to login to portal "<PortalName>"
-    And I wait for "6000" milliseconds
-    And I check I am on "Login" page
-    And I enter the details as
-      | Fields   | Value        |
-      | Email    | <email_test> |
-      | Password | <Password>   |
-    And I hit Enter
-    Then I check I am on "ManageBonds" page
-    Then I click on text "Sign Out"
-    Given I want to login to portal "<PortalName>"
-    And I enter the details as
-      | Fields   | Value      |
-      | Email    | <email>    |
-      | Password | <Password> |
-    And I hit Enter
-    Then I click on text "Manage Users"
-    Then I click on text "<email_test>"
-    Then I wait for "6000" milliseconds
-    Then I switch to frame "0"
-    Then I click on button with value "EDIT"
-    Then I wait for "6000" milliseconds
-    Then I click on button with value "Inactive"
-    Then I click on button with value "Save"
-    Then I wait for "6000" milliseconds
-    # now reactive the user again
-    Then I see text "Are you sure you want to deactivate this user?" displayed
-    Then I click on button with value "Yes"
-    Then I wait for "6000" milliseconds
-    Then I check that table "RealEstateAgentTable_Wrapper" with row containing "<email_test>" has the following
-      | Fields | Value           |
-      | item1  | Nitin           |
-      | item1  | Paul            |
-      | item1  | <email_test>    |
-      | item1  | RBU Team Leader |
-      | item1  | Inactive        |
-
+    
+     Then I check I am on "Bond Lodgement Confirmation" page
+     Then I click on button with value "Submit"
+      And I wait for "2000" milliseconds
+    Then I see text "The status of your Bond/s has been changed to 'Raised-Pending Payment'." displayed
+     
+   
     Examples: 
-      | PortalName | email                   | Password   | Message                                  | email_test       |
-      | ARB        | agentadmin2@test.com | Support123 | Invalid login details. Please try again. | nitin@amail.club |
+      | PortalName | email                | Password   | Message                                  | BondId  | Name            |
+      | ARB        | agentadmin2@test.com | Support123 | Invalid login details. Please try again. | 1000125 | Agent Admin Two |

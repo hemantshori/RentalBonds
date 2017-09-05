@@ -1,10 +1,6 @@
 @RB_Regression
 Feature: Iteration 2 tests
 
-  #DONE: 91, 122, 123, 125, 126, 139, 165,
-  #CANNOT DO: 121,
-  #DONE: ARB-333
-  
   Scenario Outline: ARB-91: As an anonymous user E.g. Tenant who is not logged in, I want to search for a bond so that I can view details of this bond
     Given I want to login to portal "<PortalName>"
     #Scenario 1: User accesses the anonymous Search Bond function
@@ -18,7 +14,6 @@ Feature: Iteration 2 tests
       | PortalName | email                   | Password   | Message                                  | email1       | email2          |
       | BondSearch | rbuteamleader1@test.com | Support123 | Invalid login details. Please try again. | RBU@Test.com | 123arb@test.com |
 
- 
   Scenario Outline: ARB-122: As an Agent Administrator, I want to update a users details so that their information is up to dates
     Given I want to login to portal "<PortalName>"
     And I wait for "4000" milliseconds
@@ -30,7 +25,7 @@ Feature: Iteration 2 tests
     And I hit Enter
     Then I click on text "Manage Users"
     Then I click on text "ron.coldebella@dbresults.com.au"
-    Then I wait for "4000" milliseconds
+    Then I wait for "2000" milliseconds
     Then I switch to frame "0"
     Then I click on button with value "EDIT"
     Then I click on button with value "Cancel"
@@ -38,13 +33,14 @@ Feature: Iteration 2 tests
     Then I wait for "4000" milliseconds
     Then I switch to frame "0"
     Then I click on button with value "EDIT"
-    Then I select "Agent Administrator" from "User_Role"
+    Then I select "Agent Administrator" from "Role"
     Then I click on button with value "Save"
+    Then I wait for "2000" milliseconds
     Then I click on text "ron.coldebella@dbresults.com.au"
-    Then I wait for "4000" milliseconds
+    Then I wait for "2000" milliseconds
     Then I switch to frame "0"
     Then I click on button with value "EDIT"
-    Then I select "Property Manager" from "User_Role"
+    Then I select "Property Manager" from "Role"
     Then I click on button with value "Save"
     Then I see text "Ron Coldebella's details have been successfully updated." displayed
 
@@ -75,6 +71,7 @@ Feature: Iteration 2 tests
     #Scenario 2: Mandatory fields not filled in
     Then I click on button with value "Save"
     Then I see text "Required fields have not been completed" displayed
+    Then I wait for "2000" milliseconds
     #Scenario 3: Email address not in the correct format
     Then I select "RBU Team Leader" from "Role"
     And I enter the details as
@@ -136,58 +133,6 @@ Feature: Iteration 2 tests
     Examples: 
       | PortalName | email                   | Password   | Message                                  | email_test                      | FirstName      | LastName       | UserEmail                |
       | ARB        | rbuteamleader1@test.com | Support123 | Invalid login details. Please try again. | ron.coldebella@dbresults.com.au | TESTAGAINAGAIN | TESTAGAINAGAIN | TEST16F@asdfasfdasdf.com |
-
-  Scenario Outline: ARB-125: As an RBU Team Leader, I want to deactivate a user within RBU or ACT Housing so that they can no longer access the portal
-    #Scenario 1: RBU Team Leader accesses the edit user account function from the Manage Users page
-    Given I want to login to portal "<PortalName>"
-    And I wait for "4000" milliseconds
-    And I check I am on "Login" page
-    And I enter the details as
-      | Fields   | Value      |
-      | Email    | <email>    |
-      | Password | <Password> |
-    And I hit Enter
-    Then I click on text "Manage Users"
-    Then I click on text "123arb@test.com"
-    And I wait for "4000" milliseconds
-    Then I switch to frame "0"
-    Then I click on button with value "EDIT"
-    And I wait for "4000" milliseconds
-    Then I check "User_Role" exists
-    Then I check "USER_EXTENSION_FirstName" is readonly
-    Then I check "USER_EXTENSION_LastName" is readonly
-    Then I check "User_Email" is readonly
-    Then I check "User_ContactPhone" is readonly
-    #Scenario 4: RBU Team Leader cancels user account creation with no unsaved changes
-    Then I click on button with value "Cancel"
-    Then I check I am on "ManageUsers" page
-    #Scenario 5: RBU Team Leader cancels user account creation with unsaved changes
-    Then I click on text "123arb@test.com"
-    And I wait for "4000" milliseconds
-    Then I switch to frame "0"
-    Then I click on button with value "EDIT"
-    Then I select "RBU Officer" from "User_Role"
-    Then I click on button with value "Cancel"
-    Then I see "There are unsaved changes on this page. Do you wish to proceed?" displayed on popup and I click "Cancel"
-    Then I click on button with value "Cancel"
-    Then I see "There are unsaved changes on this page. Do you wish to proceed?" displayed on popup and I click "OK"
-    #Scenario 3: RBU Team Leader updates a user’s role
-    Then I click on text "123arb@test.com"
-    And I wait for "4000" milliseconds
-    Then I switch to frame "0"
-    Then I click on button with value "EDIT"
-    Then I select "RBU Team Leader" from "User_Role"
-    Then I click on button with value "Save"
-    Then I click on text "123arb@test.com"
-    And I wait for "4000" milliseconds
-    Then I switch to frame "0"
-    Then I click on button with value "EDIT"
-    Then I select "RBU Team Leader" from "User_Role"
-    Then I click on button with value "Save"
-
-    Examples: 
-      | PortalName | email                   | Password   | Message                                  | email_test      |
-      | ARB        | rbuteamleader1@test.com | Support123 | Invalid login details. Please try again. | 123arb@test.com |
 
   Scenario Outline: ARB-139: As an RBU Team Leader, I want to reactivate a user within RBU or ACT Housing so that they can access the portal again
     Given I want to login to portal "<PortalName>"
@@ -320,11 +265,10 @@ Feature: Iteration 2 tests
     Then I see text "The activation email has been sent." displayed
 
     Examples: 
-      | PortalName | email                   | Password   | Message                                       | email2          |emailRegistered|
-      | ARB        | agentadmin2@test.com | Support123 | Invalid login details. Please try again. |  pleasedonotuse@automation.com |nitin.paul@dbresults.com.au|
-  
-  
-Scenario Outline: ARB-126
+      | PortalName | email                | Password   | Message                                  | email2                        | emailRegistered             |
+      | ARB        | agentadmin2@test.com | Support123 | Invalid login details. Please try again. | pleasedonotuse@automation.com | nitin.paul@dbresults.com.au |
+
+  Scenario Outline: ARB-126
     Given I want to login to portal "<PortalName>"
     And I wait for "2000" milliseconds
     And I check I am on "Login" page
@@ -420,7 +364,7 @@ Scenario Outline: ARB-126
       | PortalName | email                | Password   | Message                                  | email_test                    |
       | ARB        | agentadmin2@test.com | Support123 | Invalid login details. Please try again. | pleasedonotuse@automation.com |
 
- Scenario Outline: ARB-267, As an Agent Administrator/Property Manager/Lessor, I want to add multiple tenants on a Bond Lodgement form so that all parties contributing to the Bond are captured
+  Scenario Outline: ARB-267, As an Agent Administrator/Property Manager/Lessor, I want to add multiple tenants on a Bond Lodgement form so that all parties contributing to the Bond are captured
     Given I want to login to portal "<PortalName>"
     And I wait for "2000" milliseconds
     And I check I am on "Login" page
@@ -469,7 +413,7 @@ Scenario Outline: ARB-126
     Then I click on text "ADD TENANT"
     And I wait for "1000" milliseconds
     Then I click on button with value "Next"
-     And I wait for "1000" milliseconds
+    And I wait for "1000" milliseconds
     Then I see text "Required fields have not been completed." displayed
 
     Examples: 
@@ -477,7 +421,6 @@ Scenario Outline: ARB-126
       | ARB        | agentadmin2@test.com | Support123 | Invalid login details. Please try again. | honesurevo@mystvpn.com |
       | ARB        | lessor2@test.com     | Support123 | Invalid login details. Please try again. | honesurevo@mystvpn.com |
 
-  
   Scenario Outline: ARB-94: As an RBU Team Leader/Officer, I want to add comments to a bond
     #Scenario 1 - RBU Team Leader/Officer adds a comment to an exisiting bond
     Given I want to login to portal "<PortalName>"
@@ -527,7 +470,7 @@ Scenario Outline: ARB-126
       | PortalName | email                   | email2               | Password   | Message                                  | email_test                      | BondId  |
       | ARB        | rbuteamleader1@test.com | agentadmin2@test.com | Support123 | Invalid login details. Please try again. | ron.coldebella@dbresults.com.au | 1000125 |
 
-   Scenario Outline: ARB-114: As a Logged in user, I want to view a bond history (Audit trail) which have occurred on a bond so that I can best manage this bond.
+  Scenario Outline: ARB-114: As a Logged in user, I want to view a bond history (Audit trail) which have occurred on a bond so that I can best manage this bond.
     Given I want to login to portal "<PortalName>"
     And I wait for "2000" milliseconds
     And I check I am on "Login" page
@@ -559,8 +502,8 @@ Scenario Outline: ARB-126
     Examples: 
       | PortalName | email                | Password   | Message                                  | BondId  | Name            |
       | ARB        | agentadmin2@test.com | Support123 | Invalid login details. Please try again. | 1000125 | Agent Admin Two |
-  
- Scenario Outline: ARB-97: As an Agent Administrator/Property Manager/Lessor/RBU Team Leader/RBU Officer, I want to select the Bond/s I want to pay so that I can pay them in one payment transaction.
+
+  Scenario Outline: ARB-97: As an Agent Administrator/Property Manager/Lessor/RBU Team Leader/RBU Officer, I want to select the Bond/s I want to pay so that I can pay them in one payment transaction.
     Given I want to login to portal "<PortalName>"
     And I check I am on "Login" page
     And I enter the details as
@@ -591,15 +534,15 @@ Scenario Outline: ARB-126
     Then I click on button with value "Next"
     Then I check I am on "Bond Lodgement Parties" page
     And I enter the details as
-      | Fields          | Value                              |
-      | TenantFirstName | TenantFirstName                    |
-      | TenantLastName  | TenantLastName                     |
-      | TenantEmail     | TenantEmail@TEST.com               |
-      | TenantPhone     |                         1234567890 |
-      | LessorFirstName | LessorFirstName                    |
-      | LessorLastName  | LessorLastName                     |
-      | LessorEmail     | LessorEmail@TeST.com               |
-      | LessorPhone     |                         0987654321 |
+      | Fields          | Value                               |
+      | TenantFirstName | TenantFirstName                     |
+      | TenantLastName  | TenantLastName                      |
+      | TenantEmail     | TenantEmail@TEST.com                |
+      | TenantPhone     |                          1234567890 |
+      | LessorFirstName | LessorFirstName                     |
+      | LessorLastName  | LessorLastName                      |
+      | LessorEmail     | LessorEmail@TeST.com                |
+      | LessorPhone     |                          0987654321 |
       | PostalAddress   | 10 FLORA AVE, BADGER CREEK VIC 3777 |
     Then I click on button with value "Next"
     Then I check I am on "Bond Lodgement Summary" page
@@ -660,8 +603,8 @@ Scenario Outline: ARB-126
     Examples: 
       | PortalName | email                | Password   | Message                                  | BondId  | Name            |
       | ARB        | agentadmin2@test.com | Support123 | Invalid login details. Please try again. | 1000125 | Agent Admin Two |
-      
-      Scenario Outline: ARB-333: As an aagent admin, property manager, lessor, I want to pay a single Bond.
+
+  Scenario Outline: ARB-333: As an aagent admin, property manager, lessor, I want to pay a single Bond.
     Given I want to login to portal "<PortalName>"
     And I check I am on "Login" page
     And I enter the details as
@@ -731,7 +674,6 @@ Scenario Outline: ARB-126
       | PortalName | email                | Password   | Message                                  | Name            | LessorFirstName | LessorLastName | LessorEmail          | LessorPhone | PostalAddress                       |
       | ARB        | agentadmin2@test.com | Support123 | Invalid login details. Please try again. | Agent Admin Two | LessorFirstName | LessorLastName | LessorEmail@TeST.com |  0987654321 | 10 FLORA AVE, BADGER CREEK VIC 3777 |
 
-  @wip
   Scenario Outline: ARB-333/2 using Lessor: As an aagent admin, property manager, lessor, I want to pay a single Bond.
     Given I want to login to portal "<PortalName>"
     And I check I am on "Login" page
@@ -798,7 +740,7 @@ Scenario Outline: ARB-126
     Examples: 
       | PortalName | email            | Password   | Message                                  | Name |
       | ARB        | lessor2@test.com | Support123 | Invalid login details. Please try again. | Agen |
-     
+
   #################################################################################################################################
   #################################################################################################################################
   ########## ITERATION 3 ##################
@@ -900,5 +842,3 @@ Scenario Outline: ARB-126
       | PortalName | email                         | Password   | Message                                  | email_test             | Responsible_Party  | TextOnSelection        | SelectValue1       | Dropdown1      | SelectValue2 | Dropdown2 |
       | ARB        | backofficeteamleader@test.com | Support123 | Invalid login details. Please try again. | honesurevo@mystvpn.com | ManagingAgentRadio | Managing Agent Details | DB RESULTS PTY LTD | AgencyNameDrop | ujaad singh  | AgentDrop |
       | ARB        | backofficeteamleader@test.com | Support123 | Invalid login details. Please try again. | honesurevo@mystvpn.com | LessorRadio        | Responsible Party      |                    |                |              |           |
-
-  

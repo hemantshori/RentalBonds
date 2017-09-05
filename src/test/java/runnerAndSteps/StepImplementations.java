@@ -18,7 +18,8 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.containsString;
 import org.apache.http.HttpStatus;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.json.JSONException;
@@ -782,39 +783,33 @@ public class StepImplementations {
 	
 	@Then("^I check that table \"(.*?)\" with row containing \"(.*?)\" has the following$")
 	public void i_should_see_displayed_in_table(String arg1, String arg2, DataTable table) throws Throwable {
-	//public void i_should_see_displayed_in_table(String arg1, String arg2) throws Throwable {
+
 		
-		boolean all_clear = true;
+	
 		
 		String tableXpath = PageFactory.initElements(driver, DBUtilities.class).xpathMakerPickTrTextInTableID(arg2, arg1);
 		String rowContent = driver.findElements(By.xpath(tableXpath)).get(0).getText();
+		System.out.println(rowContent);
 		List<List<String>> tableData = table.raw();
-		List<String> rowContentList = Arrays.asList(rowContent.split("\n"));
+		//List<String> rowContentList = Arrays.asList(rowContent.split("\n"));
 		
 		for (int i = 1; i < tableData.size(); i++){
 			String data = tableData.get(i).get(1);
+			System.out.println("Checking for " +data);
 			
 			// less strict implementation, merely checks if the data in the table is inside the row contents
-			if (!rowContentList.contains(data)){
-				System.out.println(data + " was not found in the table row!");
-				all_clear = false;
-			}
+		try{
+			assertThat(rowContent, containsString(data));
 			
-			// strict implementation, all one to one checks must succeed
-//			if (!rowContentList.get(i-1).equals(data)){
-//				System.out.println(data + ", " + rowContentList.get(i-1));
-//				System.out.println(data + " was not found in the table row!");
-//				all_clear = false;
-//			}
-			
-		}
+	
+		}catch (Exception e){
 		
+		Log.info("Not found" +data);
+		}
 		// this step will click on table elements that generate popups, for some reason
 		// use this to refresh the page and make the popups disappear
 		driver.navigate().refresh();
 		
-		if (all_clear == false){
-			Assert.assertTrue(false);
 		}
 		
 

@@ -172,6 +172,12 @@ public class XPathGenerator {
 		System.out.println(" its " + xpath);
 		return xpath;
 	}
+	public String xpathMakerPickFirstRowInTable(String arg1, String arg2) {
+
+		String xpath = "//table[contains(@id, '" + arg2 + "')]//tbody//tr[1]//td[1]";
+		System.out.println("Picking the first row from table " +arg2 +" with Xpath" + xpath);
+		return xpath;
+	}
 
 	public String xpathMakerTbodyById(String arg1) {
 		String xpath = "//table[contains(@id, '" + arg1 + "')]/tbody";

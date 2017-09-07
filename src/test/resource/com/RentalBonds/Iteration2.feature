@@ -134,7 +134,7 @@ Feature: Iteration 2 tests
       | PortalName | email                   | Password   | Message                                  | email_test                      | FirstName      | LastName       | UserEmail                |
       | ARB        | rbuteamleader1@test.com | Support123 | Invalid login details. Please try again. | ron.coldebella@dbresults.com.au | TESTAGAINAGAIN | TESTAGAINAGAIN | TEST16F@asdfasfdasdf.com |
 
-  Scenario Outline: ARB-139: As an RBU Team Leader, I want to reactivate a user within RBU or ACT Housing so that they can access the portal again
+  Scenario Outline: ARB-139, ARB-137: As an RBU Team Leader, I want to reactivate a user within RBU or ACT Housing so that they can access the portal again
     Given I want to login to portal "<PortalName>"
     And I wait for "6000" milliseconds
     And I check I am on "Login" page
@@ -384,6 +384,8 @@ Feature: Iteration 2 tests
       | StreetName         | Shori                               |
       | Suburb             | Murrumbeena                         |
       | Postcode           |                                1111 |
+            | Section           |                                12 |
+      | Block           |                                10 |
       | NumberOfBedrooms   |                                  13 |
       | TotalBondAmount    |                                 400 |
       | WeeklyRentalAmount |                                 400 |
@@ -523,6 +525,8 @@ Feature: Iteration 2 tests
       | StreetName       | Shori                               |
       | Suburb           | Murrumbeena                         |
       | Postcode         |                                1111 |
+            | Section           |                                12 |
+      | Block           |                                10 |
       | NumberOfBedrooms |                                  13 |
     Then I select "Separated House" from "DwellingType"
     And I select "Residential" from "OccupancyType"
@@ -624,6 +628,8 @@ Feature: Iteration 2 tests
       | StreetName       | Shori                               |
       | Suburb           | Murrumbeena                         |
       | Postcode         |                                1111 |
+            | Section           |                                12 |
+      | Block           |                                10 |
       | NumberOfBedrooms |                                  13 |
     Then I select "Separated House" from "DwellingType"
     And I select "Residential" from "OccupancyType"
@@ -694,6 +700,8 @@ Feature: Iteration 2 tests
       | StreetName       | Shori                              |
       | Suburb           | Murrumbeena                        |
       | Postcode         |                               1111 |
+            | Section           |                                12 |
+      | Block           |                                10 |
       | NumberOfBedrooms |                                 13 |
     Then I select "Separated House" from "DwellingType"
     And I select "Residential" from "OccupancyType"
@@ -740,6 +748,42 @@ Feature: Iteration 2 tests
     Examples: 
       | PortalName | email            | Password   | Message                                  | Name |
       | ARB        | lessor2@test.com | Support123 | Invalid login details. Please try again. | Agen |
+      
+      Scenario Outline: ARB-124, As an RBU Team Leader, I want to view a list of users within the RBU and ACT Housing so that I know who can access the portal
+    #Scenario 1,2
+    Given I want to login to portal "<PortalName>"
+    And I wait for "6000" milliseconds
+    And I check I am on "Login" page
+    And I enter the details as
+      | Fields   | Value      |
+      | Email    | <email>    |
+      | Password | <Password> |
+    And I hit Enter
+    Then I check I am on "ManageBonds" page
+    Then I click on text "Manage Users"
+    Then I check I am on "ManageUsers" page
+    Then I check that table "UserListTable" with row containing "<Email>" has the following
+      | Fields | Value           |
+      | item1  |             123 |
+      | item1  | RBU Team Leader |
+    Then I "click" text "<Email>" displayed in table "UserListTable"
+    And I see popup "MainContent" displayed
+    Then "<Item>" is displayed as "<ItemName>"
+      | Fields | Value          |
+      | item1  | Role           |
+      | item1  | First Name     |
+      | item1  | Last Name      |
+      | item1  | Email Address  |
+      | item1  | Status         |
+      #Scenario 3
+      And I click on button "close"
+      Then I check I am on "ManageUsers" page
+    
+
+    Examples: 
+      | PortalName | email                   | Password   | Email           |
+      | ARB        | rbuteamleader1@test.com | Support123 | 123arb@test.com |
+      
 
   #################################################################################################################################
   #################################################################################################################################
@@ -766,6 +810,8 @@ Feature: Iteration 2 tests
       | StreetName         | Shori                               |
       | Suburb             | Murrumbeena                         |
       | Postcode           |                                1111 |
+            | Section           |                                12 |
+      | Block           |                                10 |
       | NumberOfBedrooms   |                                  13 |
       | TotalBondAmount    |                                 400 |
       | WeeklyRentalAmount |                                 400 |
@@ -842,3 +888,64 @@ Feature: Iteration 2 tests
       | PortalName | email                         | Password   | Message                                  | email_test             | Responsible_Party  | TextOnSelection        | SelectValue1       | Dropdown1      | SelectValue2 | Dropdown2 |
       | ARB        | backofficeteamleader@test.com | Support123 | Invalid login details. Please try again. | honesurevo@mystvpn.com | ManagingAgentRadio | Managing Agent Details | DB RESULTS PTY LTD | AgencyNameDrop | ujaad singh  | AgentDrop |
       | ARB        | backofficeteamleader@test.com | Support123 | Invalid login details. Please try again. | honesurevo@mystvpn.com | LessorRadio        | Responsible Party      |                    |                |              |           |
+
+       Scenario Outline: ARB-438 As an Agent Administrator/Property Manager/Lessor/RBU Team Leader/Officer, I want to capture the lodgement 'Type' so that it can be used for Land Tax reporting purposes
+    Given I want to login to portal "<PortalName>"
+    And I check I am on "Login" page
+    And I enter the details as
+      | Fields   | Value      |
+      | Email    | <email>    |
+      | Password | <Password> |
+    And I hit Enter
+    Then I click on text "Lodge Bond"
+    Then I check I am on "Bond Lodgement Premise" page
+    Then I click on text "ENTER MANUAL ADDRESS"
+    And I wait for "2000" milliseconds
+    And I enter the details as
+      | Fields             | Value                                      |
+      | OneLineAddress     | 217 Badger Creek Rd, Badger Creek VIC 3777 |
+      | StreetNumber       |                                         14 |
+      | StreetName         | Shorid                                     |
+      | Suburb             | Murrumbeena                                |
+      | Postcode           |                                       7777 |
+      | Section            |                                         12 |
+      | Block              |                                         10 |
+      | NumberOfBedrooms   |                                         21 |
+      | TotalBondAmount    |                                       1000 |
+      | WeeklyRentalAmount |                                       2000 |
+    Then I select "Townhouse/Semi-Detached" from "DwellingType"
+    Then I select "<OccType>" from "OccupancyType"
+    Then I click on button with value "Next"
+    Then I check I am on "Bond Lodgement Parties" page
+    And I enter the details as
+      | Fields          | Value                      |
+      | TenantFirstName | someautomated              |
+      | TenantLastName  | test                       |
+      | TenantEmail     | someautomatedtest@test.com |
+      | TenantPhone     |                 0422184033 |
+    And I click on button "<LessorRadio>"
+    And I enter the details as
+      | Fields          | Value             |
+      | LessorFirstName | <LessorFirstName> |
+      | LessorLastName  | <LessorLastName>  |
+    #And I hit Enter
+    Then I click on button with value "Next"
+    And I wait for "4000" milliseconds
+    And I enter the details as
+      | Fields        | Value           |
+      | LessorEmail   | <LessorEmail>   |
+      | LessorPhone   | <LessorPhone>   |
+      | PostalAddress | <PostalAddress> |
+    Then I click on button with value "Next"
+    And I check I am on "Bond Lodgement Summary" page
+    And I see text "<OccType>" displayed
+
+    Examples: 
+      | PortalName | email                         | Password   | LessorRadio | LessorFirstName | LessorLastName | LessorEmail     | LessorPhone | PostalAddress                              | Message                                  | AgencyName  | OccType     |
+      | ARB        | rbuteamleader1@test.com       | Support123 | LessorRadio | sfdfs           | sddsf          | sdfdf@gmail.com |  0433456673 | 217 Badger Creek Rd, Badger Creek VIC 3777 | Invalid login details. Please try again. | FirstAgency | Residential |
+      | ARB        | rbuteamleader1@test.com       | Support123 | LessorRadio | sfdfs           | sddsf          | sdfdf@gmail.com |  0433456673 | 217 Badger Creek Rd, Badger Creek VIC 3777 | Invalid login details. Please try again. | FirstAgency | Occupancy   |
+      | ARB        | backofficeteamleader@test.com | Support123 | LessorRadio | sfdfs           | sddsf          | sdfdf@gmail.com |  0433456673 | 217 Badger Creek Rd, Badger Creek VIC 3777 | Invalid login details. Please try again. | FirstAgency | Residential |
+      | ARB        | backofficeteamleader@test.com | Support123 | LessorRadio | sfdfs           | sddsf          | sdfdf@gmail.com |  0433456673 | 217 Badger Creek Rd, Badger Creek VIC 3777 | Invalid login details. Please try again. | FirstAgency | Occupancy   |
+      | ARB        | lessor2@test.com              | Support123 |             |                 |                |                 |             |                                            | Invalid login details. Please try again. | FirstAgency | Residential |
+      | ARB        | lessor2@test.com              | Support123 |             |                 |                |                 |             |                                            | Invalid login details. Please try again. | FirstAgency | Occupancy   |
+      

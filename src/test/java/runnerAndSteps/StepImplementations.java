@@ -536,6 +536,13 @@ public class StepImplementations {
 		String myXpath = null;
 		DBUtilities createXpath = new DBUtilities(driver);
 		
+		if(arg1.equals("")){System.out.println(" Not expecting element to be present on screen so going to next step");}
+		else if(arg1.equals("close"))
+		{
+			myXpath = createXpath.xpathMakerByTextInClass(arg1);
+			driver.findElement(By.xpath(myXpath)).click();
+		}else{
+		
 		try {
 			myXpath = createXpath.xpathMakerById(arg1);
 			driver.findElement(By.xpath(myXpath)).click();
@@ -547,7 +554,7 @@ public class StepImplementations {
 		}
 		Thread.sleep(2000);
 		
-
+		}
 	}
 	
 	@And("^I click on button with value \"(.*?)\"$")
@@ -555,13 +562,8 @@ public class StepImplementations {
 		String myXpath = null;
 		DBUtilities createXpath = new DBUtilities(driver);
 		myXpath = createXpath.xpathMakerByValue(arg1);
-		try {
-			Thread.sleep(2000);
-			driver.findElement(By.xpath(myXpath)).click();
-		}
-		catch (Exception e ){
-			Log.info("Button is present but can not click it");
-		}
+		driver.findElement(By.xpath(myXpath)).click();
+
 		
 	}
 	
@@ -749,6 +751,13 @@ public class StepImplementations {
 	@Then("^I \"(.*?)\" text \"(.*?)\" displayed in table \"(.*?)\"$")
 	public void i_should_see_displayed_in_table(String arg1, String arg2, String arg3) throws Throwable {
 
+		if (arg2.equals("selectTheFirstRow")){
+			DBUtilities createXpath = new DBUtilities(driver);
+			String checkFirstRowInTable = createXpath.xpathMakerPickFirstRowInTable(arg2, arg3);
+			
+			driver.findElement(By.xpath(checkFirstRowInTable)).click();
+		}else{
+		
 		if (arg1.equals("check")) {
 			String checkElementInTable = PageFactory.initElements(driver, DBUtilities.class)
 					.xpathMakerPickTrTextInTableID(arg2, arg3);
@@ -763,9 +772,6 @@ public class StepImplementations {
 				String checkBoxToClick = PageFactory.initElements(driver, DBUtilities.class)
 						.xpathMakerByInputId("wtBondsList_ctl03_wt1");
 				WebElement element =	driver.findElement(By.xpath(checkBoxToClick));
-//				Actions actions = new Actions(driver);
-//				actions.moveToElement(element).click().build().perform();
-//				actions.moveToElement(element).click();
 				element.click();
 			
 		}else{
@@ -777,6 +783,7 @@ public class StepImplementations {
 
 		}
 		}
+		}
 	}
 	
 	// Then I check that table ARG with row containing ARG2 has the following
@@ -784,9 +791,6 @@ public class StepImplementations {
 	@Then("^I check that table \"(.*?)\" with row containing \"(.*?)\" has the following$")
 	public void i_should_see_displayed_in_table(String arg1, String arg2, DataTable table) throws Throwable {
 
-		
-	
-		
 		String tableXpath = PageFactory.initElements(driver, DBUtilities.class).xpathMakerPickTrTextInTableID(arg2, arg1);
 		String rowContent = driver.findElements(By.xpath(tableXpath)).get(0).getText();
 		System.out.println(rowContent);
@@ -797,7 +801,7 @@ public class StepImplementations {
 			String data = tableData.get(i).get(1);
 			System.out.println("Checking for " +data);
 			
-			// less strict implementation, merely checks if the data in the table is inside the row contents
+		
 		try{
 			assertThat(rowContent, containsString(data));
 			

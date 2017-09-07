@@ -504,6 +504,7 @@ public class DBUtilities extends XPathGenerator {
 	// entering cucumber table values
 	public void enterCucumbertableValuesInUI (DataTable table) throws InterruptedException 
 			 {
+		
 				 	String myXpath;
 					List<List<String>> data = table.raw();
 						
@@ -512,8 +513,8 @@ public class DBUtilities extends XPathGenerator {
 							System.out.println("The table length is .." +data.size());	
 							
 						DBUtilities createXpath = new DBUtilities(driver);
-
-						
+						if(name.equals("")){System.out.println(" Not expecting element to be present on screen so going to next step");}
+						else if(!name.equals("")){
 						try {
 							
 							  myXpath = createXpath.xpathMakerByInputId(data.get(i).get(0));
@@ -562,6 +563,7 @@ public class DBUtilities extends XPathGenerator {
 						}else {
 						 driver.findElement(By.xpath(myXpath)).sendKeys(data.get(i).get(1));
 						System.out.println("Entering value in table " +myXpath +"as" +name);  
+						}
 						}
 						}
 			 }

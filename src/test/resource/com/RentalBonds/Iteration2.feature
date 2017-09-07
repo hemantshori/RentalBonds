@@ -384,8 +384,8 @@ Feature: Iteration 2 tests
       | StreetName         | Shori                               |
       | Suburb             | Murrumbeena                         |
       | Postcode           |                                1111 |
-            | Section           |                                12 |
-      | Block           |                                10 |
+      | Section            |                                  12 |
+      | Block              |                                  10 |
       | NumberOfBedrooms   |                                  13 |
       | TotalBondAmount    |                                 400 |
       | WeeklyRentalAmount |                                 400 |
@@ -525,8 +525,8 @@ Feature: Iteration 2 tests
       | StreetName       | Shori                               |
       | Suburb           | Murrumbeena                         |
       | Postcode         |                                1111 |
-            | Section           |                                12 |
-      | Block           |                                10 |
+      | Section          |                                  12 |
+      | Block            |                                  10 |
       | NumberOfBedrooms |                                  13 |
     Then I select "Separated House" from "DwellingType"
     And I select "Residential" from "OccupancyType"
@@ -628,8 +628,8 @@ Feature: Iteration 2 tests
       | StreetName       | Shori                               |
       | Suburb           | Murrumbeena                         |
       | Postcode         |                                1111 |
-            | Section           |                                12 |
-      | Block           |                                10 |
+      | Section          |                                  12 |
+      | Block            |                                  10 |
       | NumberOfBedrooms |                                  13 |
     Then I select "Separated House" from "DwellingType"
     And I select "Residential" from "OccupancyType"
@@ -700,8 +700,8 @@ Feature: Iteration 2 tests
       | StreetName       | Shori                              |
       | Suburb           | Murrumbeena                        |
       | Postcode         |                               1111 |
-            | Section           |                                12 |
-      | Block           |                                10 |
+      | Section          |                                 12 |
+      | Block            |                                 10 |
       | NumberOfBedrooms |                                 13 |
     Then I select "Separated House" from "DwellingType"
     And I select "Residential" from "OccupancyType"
@@ -748,8 +748,8 @@ Feature: Iteration 2 tests
     Examples: 
       | PortalName | email            | Password   | Message                                  | Name |
       | ARB        | lessor2@test.com | Support123 | Invalid login details. Please try again. | Agen |
-      
-      Scenario Outline: ARB-124, As an RBU Team Leader, I want to view a list of users within the RBU and ACT Housing so that I know who can access the portal
+
+  Scenario Outline: ARB-124, As an RBU Team Leader, I want to view a list of users within the RBU and ACT Housing so that I know who can access the portal
     #Scenario 1,2
     Given I want to login to portal "<PortalName>"
     And I wait for "6000" milliseconds
@@ -769,21 +769,19 @@ Feature: Iteration 2 tests
     Then I "click" text "<Email>" displayed in table "UserListTable"
     And I see popup "MainContent" displayed
     Then "<Item>" is displayed as "<ItemName>"
-      | Fields | Value          |
-      | item1  | Role           |
-      | item1  | First Name     |
-      | item1  | Last Name      |
-      | item1  | Email Address  |
-      | item1  | Status         |
-      #Scenario 3
-      And I click on button "close"
-      Then I check I am on "ManageUsers" page
-    
+      | Fields | Value         |
+      | item1  | Role          |
+      | item1  | First Name    |
+      | item1  | Last Name     |
+      | item1  | Email Address |
+      | item1  | Status        |
+    #Scenario 3
+    And I click on button "close"
+    Then I check I am on "ManageUsers" page
 
     Examples: 
       | PortalName | email                   | Password   | Email           |
       | ARB        | rbuteamleader1@test.com | Support123 | 123arb@test.com |
-      
 
   #################################################################################################################################
   #################################################################################################################################
@@ -810,8 +808,8 @@ Feature: Iteration 2 tests
       | StreetName         | Shori                               |
       | Suburb             | Murrumbeena                         |
       | Postcode           |                                1111 |
-            | Section           |                                12 |
-      | Block           |                                10 |
+      | Section            |                                  12 |
+      | Block              |                                  10 |
       | NumberOfBedrooms   |                                  13 |
       | TotalBondAmount    |                                 400 |
       | WeeklyRentalAmount |                                 400 |
@@ -889,7 +887,7 @@ Feature: Iteration 2 tests
       | ARB        | backofficeteamleader@test.com | Support123 | Invalid login details. Please try again. | honesurevo@mystvpn.com | ManagingAgentRadio | Managing Agent Details | DB RESULTS PTY LTD | AgencyNameDrop | ujaad singh  | AgentDrop |
       | ARB        | backofficeteamleader@test.com | Support123 | Invalid login details. Please try again. | honesurevo@mystvpn.com | LessorRadio        | Responsible Party      |                    |                |              |           |
 
-       Scenario Outline: ARB-438 As an Agent Administrator/Property Manager/Lessor/RBU Team Leader/Officer, I want to capture the lodgement 'Type' so that it can be used for Land Tax reporting purposes
+  Scenario Outline: ARB-438 As an Agent Administrator/Property Manager/Lessor/RBU Team Leader/Officer, I want to capture the lodgement 'Type' so that it can be used for Land Tax reporting purposes
     Given I want to login to portal "<PortalName>"
     And I check I am on "Login" page
     And I enter the details as
@@ -948,4 +946,99 @@ Feature: Iteration 2 tests
       | ARB        | backofficeteamleader@test.com | Support123 | LessorRadio | sfdfs           | sddsf          | sdfdf@gmail.com |  0433456673 | 217 Badger Creek Rd, Badger Creek VIC 3777 | Invalid login details. Please try again. | FirstAgency | Occupancy   |
       | ARB        | lessor2@test.com              | Support123 |             |                 |                |                 |             |                                            | Invalid login details. Please try again. | FirstAgency | Residential |
       | ARB        | lessor2@test.com              | Support123 |             |                 |                |                 |             |                                            | Invalid login details. Please try again. | FirstAgency | Occupancy   |
-      
+
+  Scenario Outline: ARB-38, As an RBU Team Leader/Officer, I want to Approve a Refund Request so the Bond can be refunded to the nominated parties
+    Given I want to login to portal "<PortalName>"
+    And I wait for "3000" milliseconds
+    And I check I am on "Login" page
+    And I enter the details as
+      | Fields   | Value      |
+      | Email    | <email>    |
+      | Password | <Password> |
+    And I hit Enter
+    Then I check I am on "ManageBonds" page
+    Then I see text "Refunds & Payments" not displayed
+    Then I click on text "Sign Out"
+    Given I want to login to portal "<PortalName>"
+    And I wait for "2000" milliseconds
+    And I check I am on "Login" page
+    And I enter the details as
+      | Fields   | Value      |
+      | Email    | <email_2>  |
+      | Password | <Password> |
+    And I hit Enter
+    Then I check I am on "ManageBonds" page
+    And I click on text "Tasks"
+    Then "<Item>" is displayed as "<ItemName>"
+      | Fields | Value              |
+      | item1  | Refunds & Payments |
+      | item2  | Reconciliation     |
+      | item3  | Manage Bonds       |
+      | item4  | Lodge Bond         |
+      | item5  | Manage Users       |
+      | item6  | Sign Out           |
+    Then I click on text "Refunds & Payments"
+    Then "<Item>" is displayed as "<ItemName>"
+      | Fields | Value           |
+      | item1  | Refunds Raised  |
+      | item2  | Refund Payments |
+      | item3  | Disputes        |
+      | item4  | Claims          |
+      | item5  | Bond No.        |
+      | item6  | Date Requested  |
+      | item6  | Requested By    |
+      | item6  | Amount          |
+    Then I "click" text "selectTheFirstRow" displayed in table "RefundsRaisedTable"
+    #remove following once JL fixes the thing on row click
+    And I wait for "10000" milliseconds
+    Then I click on button with value "EDIT & APPROVE"
+    Then I check I am on "ApproveRefundRequest" page
+    Then "<Item>" is displayed as "<ItemName>"
+      | Fields | Value             |
+      | item1  | Total Bond Amount |
+      | item2  | Lessor / Agent    |
+      | item3  | Tenants           |
+      | item4  | VIEW BOND         |
+      | item5  | EDIT DETAILS      |
+    #Scenario 1
+    Then "<Item>" is displayed as "<ItemName>"
+      | Fields | Value  |
+      | item1  | XXXXXX |
+    And I click on text "EDIT DETAILS"
+    And I wait for "1000" milliseconds
+    And I see popup "MainContent" displayed
+    Then I switch to frame "0"
+    #Scenario 2: Fields should be editable
+    And I enter popup values as
+      | Fields        | Value       |
+      | AccountNumber |      123654 |
+      | AccountNumber |   123123123 |
+      | AccountName   | OneTwoThree |
+    Then I click on button with value "Cancel"
+    And I click on text "EDIT DETAILS"
+    And I wait for "1000" milliseconds
+    And I see popup "MainContent" displayed
+    Then I switch to frame "0"
+    #Scenario 3: hitting submit
+    And I enter popup values as
+      | Fields        | Value                    |
+      | AccountNumber |                   123654 |
+      | AccountNumber |                123123123 |
+      | AccountName   | OneTwoThree              |
+      | Phone         | <PhoneNumberToBeUpdated> |
+    Then I click on button with value "Save"
+    Then I check I am on "ApproveRefundRequest" page
+    Then I see text "<PhoneNumberToBeUpdated>" displayed
+    #Scenario:5
+    Then I click on button with value "Approve Refund"
+    And I see popup "MainContent" displayed
+    Then I switch to frame "0"
+    And I wait for "3000" milliseconds
+    Then I click on button with value "Yes"
+    And I wait for "1000" milliseconds
+    Then I see text "Refund successfully approved." displayed
+    Then I check I am on "TaskList" page
+
+    Examples: 
+      | PortalName | email                | Password   | email_2                 | BondId  | PhoneNumberToBeUpdated |
+      | ARB        | agentadmin2@test.com | Support123 | rbuteamleader1@test.com | 1000088 |             0398100609 |

@@ -1,66 +1,32 @@
 Feature: Wip
-
-  @wip
-  Scenario Outline: ARB-438 As an Agent Administrator/Property Manager/Lessor/RBU Team Leader/Officer, I want to capture the lodgement 'Type' so that it can be used for Land Tax reporting purposes
-    Given I want to login to portal "<PortalName>"
+@wip
+ 
+ Scenario Outline: ARB-393:RBU Team Leader I want to view a list of Refunds awaiting disbursements
+ #Scenario :1 RBU officer should not be able to access "Refunds Payments"
+ 
+  Given I want to login to portal "<PortalName>"
+    And I wait for "2000" milliseconds
     And I check I am on "Login" page
     And I enter the details as
       | Fields   | Value      |
       | Email    | <email>    |
       | Password | <Password> |
     And I hit Enter
-    Then I click on text "Lodge Bond"
-    Then I check I am on "Bond Lodgement Premise" page
-    Then I click on text "ENTER MANUAL ADDRESS"
-    And I wait for "2000" milliseconds
-    And I enter the details as
-      | Fields             | Value                                      |
-      | OneLineAddress     | 217 Badger Creek Rd, Badger Creek VIC 3777 |
-      | StreetNumber       |                                         14 |
-      | StreetName         | Shorid                                     |
-      | Suburb             | Murrumbeena                                |
-      | Postcode           |                                       7777 |
-      | Section            |                                         12 |
-      | Block              |                                         10 |
-      | NumberOfBedrooms   |                                         21 |
-      | TotalBondAmount    |                                       1000 |
-      | WeeklyRentalAmount |                                       2000 |
-    Then I select "Townhouse/Semi-Detached" from "DwellingType"
-    Then I select "<OccType>" from "OccupancyType"
-    Then I click on button with value "Next"
-    Then I check I am on "Bond Lodgement Parties" page
-    And I enter the details as
-      | Fields          | Value                      |
-      | TenantFirstName | someautomated              |
-      | TenantLastName  | test                       |
-      | TenantEmail     | someautomatedtest@test.com |
-      | TenantPhone     |                 0422184033 |
-    And I click on button "<LessorRadio>"
-    And I enter the details as
-      | Fields          | Value             |
-      | LessorFirstName | <LessorFirstName> |
-      | LessorLastName  | <LessorLastName>  |
-    #And I hit Enter
-    Then I click on button with value "Next"
-    And I wait for "4000" milliseconds
-    And I enter the details as
-      | Fields        | Value           |
-      | LessorEmail   | <LessorEmail>   |
-      | LessorPhone   | <LessorPhone>   |
-      | PostalAddress | <PostalAddress> |
-    Then I click on button with value "Next"
-    And I check I am on "Bond Lodgement Summary" page
-    And I see text "<OccType>" displayed
-
-    Examples: 
-      | PortalName | email                         | Password   | LessorRadio | LessorFirstName | LessorLastName | LessorEmail     | LessorPhone | PostalAddress                              | Message                                  | AgencyName  | OccType     |
-      | ARB        | rbuteamleader1@test.com       | Support123 | LessorRadio | sfdfs           | sddsf          | sdfdf@gmail.com |  0433456673 | 217 Badger Creek Rd, Badger Creek VIC 3777 | Invalid login details. Please try again. | FirstAgency | Residential |
-      | ARB        | rbuteamleader1@test.com       | Support123 | LessorRadio | sfdfs           | sddsf          | sdfdf@gmail.com |  0433456673 | 217 Badger Creek Rd, Badger Creek VIC 3777 | Invalid login details. Please try again. | FirstAgency | Occupancy   |
-      | ARB        | backofficeteamleader@test.com | Support123 | LessorRadio | sfdfs           | sddsf          | sdfdf@gmail.com |  0433456673 | 217 Badger Creek Rd, Badger Creek VIC 3777 | Invalid login details. Please try again. | FirstAgency | Residential |
-      | ARB        | backofficeteamleader@test.com | Support123 | LessorRadio | sfdfs           | sddsf          | sdfdf@gmail.com |  0433456673 | 217 Badger Creek Rd, Badger Creek VIC 3777 | Invalid login details. Please try again. | FirstAgency | Occupancy   |
-      | ARB        | lessor2@test.com              | Support123 |             |                 |                |                 |             |                                            | Invalid login details. Please try again. | FirstAgency | Residential |
-      | ARB        | lessor2@test.com              | Support123 |             |                 |                |                 |             |                                            | Invalid login details. Please try again. | FirstAgency | Occupancy   |
-
+   Examples: 
+      | PortalName | email                         | Password   |
+      | ARB        | backofficeadmin@test.com | Support123 | 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   #ready to be included into regression once JL fixes selection issue
   Scenario Outline: ARB-192: As an RBU Team Leader/Officer I want the ability to cancel a raised bond
     # create a new bond so that i tmay be cancelled
@@ -174,73 +140,9 @@ Feature: Wip
       | PortalName | email                         | Password   | Message                                  | email_test             | Responsible_Party  | TextOnSelection        | SelectValue1       | Dropdown1      | SelectValue2 | Dropdown2 |
       | ARB        | backofficeteamleader@test.com | Support123 | Invalid login details. Please try again. | honesurevo@mystvpn.com | ManagingAgentRadio | Managing Agent Details | DB RESULTS PTY LTD | AgencyNameDrop | ujaad singh  | AgentDrop |
 
-  #ready to be included into regression once JL fixes selection issue
-  Scenario Outline: ARB-38, As an RBU Team Leader/Officer, I want to Approve a Refund Request so the Bond can be refunded to the nominated parties
-    Given I want to login to portal "<PortalName>"
-    And I wait for "3000" milliseconds
-    And I check I am on "Login" page
-    And I enter the details as
-      | Fields   | Value      |
-      | Email    | <email>    |
-      | Password | <Password> |
-    And I hit Enter
-    Then I check I am on "ManageBonds" page
-    Then I see text "Refunds & Payments" not displayed
-    Then I click on text "Sign Out"
-    Given I want to login to portal "<PortalName>"
-    And I wait for "2000" milliseconds
-    And I check I am on "Login" page
-    And I enter the details as
-      | Fields   | Value      |
-      | Email    | <email_2>  |
-      | Password | <Password> |
-    And I hit Enter
-    Then I check I am on "ManageBonds" page
-    Then "<Item>" is displayed as "<ItemName>"
-      | Fields | Value              |
-      | item1  | Refunds & Payments |
-      | item2  | Reconciliation     |
-      | item3  | Manage Bonds       |
-      | item4  | Lodge Bond         |
-      | item5  | Manage Users       |
-      | item6  | Sign Out           |
-    Then I click on text "Refunds & Payments"
-    Then "<Item>" is displayed as "<ItemName>"
-      | Fields | Value           |
-      | item1  | Refunds Raised  |
-      | item2  | Refund Payments |
-      | item3  | Disputes        |
-      | item4  | Claims          |
-      | item5  | Bond No.        |
-      | item6  | Date Requested  |
-      | item6  | Requested By    |
-      | item6  | Amount          |
-    Then I "click" text "selectTheFirstRow" displayed in table "RefundsRaisedTable"
-    #remove following once JL fixes the thing on row click
-    And I wait for "10000" milliseconds
-    Then I click on button with value "EDIT & APPROVE"
-    Then I check I am on "ApproveRefundRequest" page
-    Then "<Item>" is displayed as "<ItemName>"
-      | Fields | Value             |
-      | item1  | Total Bond Amount |
-      | item2  | Lessor / Agent    |
-      | item3  | Tenants           |
-      | item4  | VIEW BOND         |
-      | item5  | EDIT DETAILS      |
-    #Scenario 1
-    Then "<Item>" is displayed as "<ItemName>"
-      | Fields | Value   |
-      | item1  | XXXXXXX |
-    And I click on text "EDIT DETAILS"
-    And I wait for "1000" milliseconds
-    And I see popup "MainContent" displayed
-    #Scenario 2: Fields should be editable
-    Then I enter the details as
-      | Fields         | Value       |
-      | BSB            |      123123 |
-      | Account_Number |   123123123 |
-      | Account_Name   | OneTwoThree |
 
-    Examples: 
-      | PortalName | email                | Password   | email_2                 | BondId  |
-      | ARB        | agentadmin2@test.com | Support123 | rbuteamleader1@test.com | 1000088 |
+
+  #ready to be included into regression once JL fixes selection issue
+  
+
+  

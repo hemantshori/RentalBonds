@@ -1,4 +1,4 @@
-@RB_Regression
+
 Feature: Iteration 2 tests
 
   Scenario Outline: ARB-91: As an anonymous user E.g. Tenant who is not logged in, I want to search for a bond so that I can view details of this bond
@@ -25,9 +25,10 @@ Feature: Iteration 2 tests
     And I hit Enter
     Then I click on text "Manage Users"
     Then I click on text "ron.coldebella@dbresults.com.au"
-    Then I wait for "2000" milliseconds
+    Then I wait for "1000" milliseconds
     Then I switch to frame "0"
     Then I click on button with value "EDIT"
+    Then I wait for "1000" milliseconds
     Then I click on button with value "Cancel"
     Then I click on text "ron.coldebella@dbresults.com.au"
     Then I wait for "4000" milliseconds
@@ -47,6 +48,7 @@ Feature: Iteration 2 tests
     Examples: 
       | PortalName | email                | Password   | Message                                  | email_test                      |
       | ARB        | agentadmin2@test.com | Support123 | Invalid login details. Please try again. | ron.coldebella@dbresults.com.au |
+
 
   Scenario Outline: ARB-123: As an RBU Team Leader, I want to create user accounts for RBU and ACT Housing Officers so that they can access the portal
     Given I want to login to portal "<PortalName>"
@@ -76,21 +78,22 @@ Feature: Iteration 2 tests
     Then I select "RBU Team Leader" from "Role"
     And I enter the details as
       | Fields                   | Value       |
-      | USER_EXTENSION_FirstName | <FirstName> |
-      | USER_EXTENSION_LastName  | <LastName>  |
-      | User_ContactPhone        |  1234567890 |
-      | User_Email               | TEST        |
+      | FirstName | <FirstName> |
+      | LastName  | <LastName>  |
+      | ContactPhone        |  1234567890 |
+      | Email               | TEST        |
     Then I click on button with value "Save"
     Then I see text "Email address is not valid, please try again" displayed
     #Scenario 4: Email address already registered
     And I enter the details as
       | Fields                   | Value       |
-      | USER_EXTENSION_FirstName | <FirstName> |
-      | USER_EXTENSION_LastName  | <LastName>  |
-      | User_ContactPhone        |  1234567890 |
-      | User_Email               | <email>     |
+      | FirstName | <FirstName> |
+      | LastName  | <LastName>  |
+      | Phone        |  1234567890 |
+      | Email               | <email>     |
     Then I click on button with value "Save"
     Then I see text "Email address is already registered, please try again" displayed
+     Then I wait for "1000" milliseconds
     Then I click on button with value "Cancel"
     #Scenario 7: RBU Team Leader cancels user account creation with unsaved changes
     Then I wait for "2000" milliseconds
@@ -99,10 +102,10 @@ Feature: Iteration 2 tests
     Then I switch to frame "0"
     And I enter the details as
       | Fields                   | Value         |
-      | USER_EXTENSION_FirstName | <FirstName>   |
-      | USER_EXTENSION_LastName  | <LastName>    |
-      | User_ContactPhone        |    1234567890 |
-      | User_Email               | TEST@TEST.com |
+      | FirstName | <FirstName>   |
+      | LastName  | <LastName>    |
+      | ContactPhone        |    1234567890 |
+      | Email               | TEST@TEST.com |
     Then I click on button with value "Cancel"
     Then I see "There are unsaved changes on this page. Do you wish to proceed?" displayed on popup and I click "Cancel"
     Then I wait for "1000" milliseconds
@@ -121,10 +124,10 @@ Feature: Iteration 2 tests
     Then I select "RBU Team Leader" from "User_Role"
     And I enter the details as
       | Fields                   | Value       |
-      | USER_EXTENSION_FirstName | <FirstName> |
-      | USER_EXTENSION_LastName  | <LastName>  |
-      | User_ContactPhone        |  1234567890 |
-    # | User_Email               | TEST17F@asdfasfdasdf.com |
+      | FirstName | <FirstName> |
+      | LastName  | <LastName>  |
+      |ContactPhone        |  1234567890 |
+    # | Email               | TEST17F@asdfasfdasdf.com |
     Then I enter "TEST@asdfsafd.com" with the current date prepended into "User_Email"
     Then I click on button with value "Save"
     Then I wait for "2000" milliseconds
@@ -156,13 +159,13 @@ Feature: Iteration 2 tests
     Then I wait for "6000" milliseconds
     Then I switch to frame "0"
     Then I click on button with value "EDIT"
-    Then I wait for "6000" milliseconds
+    Then I wait for "4000" milliseconds
     Then I click on button with value "Active"
     Then I click on button with value "Save"
-    Then I wait for "6000" milliseconds
+    Then I wait for "4000" milliseconds
     Then I see text "Are you sure you want to reactivate this user?" displayed
     Then I click on button with value "No"
-    Then I wait for "6000" milliseconds
+    Then I wait for "4000" milliseconds
     Then I click on button with value "Cancel"
     Then I check that table "RealEstateAgentTable_Wrapper" with row containing "<email_test>" has the following
       | Fields | Value           |
@@ -173,17 +176,17 @@ Feature: Iteration 2 tests
       | item1  | Inactive        |
     #Scenario 1: RBU Team Leader reactivates user account
     Then I click on text "<email_test>"
-    Then I wait for "6000" milliseconds
+    Then I wait for "4000" milliseconds
     Then I switch to frame "0"
     Then I click on button with value "EDIT"
-    Then I wait for "6000" milliseconds
+    Then I wait for "4000" milliseconds
     Then I click on button with value "Active"
     Then I click on button with value "Save"
-    Then I wait for "6000" milliseconds
+    Then I wait for "4000" milliseconds
     #
     Then I see text "Are you sure you want to reactivate this user?" displayed
     Then I click on button with value "Yes"
-    Then I wait for "6000" milliseconds
+    Then I wait for "4000" milliseconds
     Then I see text "Nitin Paul's details have been successfully updated." displayed
     Then I check that table "RealEstateAgentTable_Wrapper" with row containing "<email_test>" has the following
       | Fields | Value           |
@@ -195,7 +198,7 @@ Feature: Iteration 2 tests
     #Scenario 2: RBU Team Leader confirms reactivation
     Then I click on text "Sign Out"
     Given I want to login to portal "<PortalName>"
-    And I wait for "6000" milliseconds
+    And I wait for "4000" milliseconds
     And I check I am on "Login" page
     And I enter the details as
       | Fields   | Value        |
@@ -212,17 +215,17 @@ Feature: Iteration 2 tests
     And I hit Enter
     Then I click on text "Manage Users"
     Then I click on text "<email_test>"
-    Then I wait for "6000" milliseconds
+    Then I wait for "4000" milliseconds
     Then I switch to frame "0"
     Then I click on button with value "EDIT"
-    Then I wait for "6000" milliseconds
+    Then I wait for "4000" milliseconds
     Then I click on button with value "Inactive"
     Then I click on button with value "Save"
-    Then I wait for "6000" milliseconds
+    Then I wait for "4000" milliseconds
     # now reactive the user again
     Then I see text "Are you sure you want to deactivate this user?" displayed
     Then I click on button with value "Yes"
-    Then I wait for "6000" milliseconds
+    Then I wait for "4000" milliseconds
     Then I check that table "RealEstateAgentTable_Wrapper" with row containing "<email_test>" has the following
       | Fields | Value           |
       | item1  | Nitin           |
@@ -294,6 +297,7 @@ Feature: Iteration 2 tests
     Then I click on button with value "Inactive"
     Then I click on button with value "Save"
     Then I wait for "2000" milliseconds
+ 
     Then I see text "Are you sure you want to deactivate this user?" displayed
     Then I click on button with value "No"
     Then I wait for "2000" milliseconds
@@ -471,7 +475,7 @@ Feature: Iteration 2 tests
     Examples: 
       | PortalName | email                   | email2               | Password   | Message                                  | email_test                      | BondId  |
       | ARB        | rbuteamleader1@test.com | agentadmin2@test.com | Support123 | Invalid login details. Please try again. | ron.coldebella@dbresults.com.au | 1000125 |
-
+ 
   Scenario Outline: ARB-114: As a Logged in user, I want to view a bond history (Audit trail) which have occurred on a bond so that I can best manage this bond.
     Given I want to login to portal "<PortalName>"
     And I wait for "2000" milliseconds
@@ -672,6 +676,15 @@ Feature: Iteration 2 tests
     #Scenario 2
     Then I click on button with value "Cancel"
     Then I check I am on "Bond Lodgement Confirmation" page
+     Then I click on button with value "View Payment Info"
+      And I wait for "2000" milliseconds
+    Then I check I am on "Bond Payment View" page
+    Then "<Item>" is displayed as "<ItemName>"
+      | Fields | Value          |
+      | item1  | BACK TO BONDS  |
+      | item2  | Reference Code |
+      | item4  | BSB            |
+      | item5  | Account Number |
     Then I click on button with value "Submit"
     And I wait for "2000" milliseconds
     Then I see text "The status of your Bond/s has been changed to 'Raised-Pending Payment'." displayed
@@ -741,6 +754,16 @@ Feature: Iteration 2 tests
     #Scenario 2
     Then I click on button with value "Cancel"
     Then I check I am on "Bond Lodgement Confirmation" page
+     And I wait for "1000" milliseconds
+      Then I click on button with value "View Payment Info"
+    Then I check I am on "Bond Payment View" page
+
+    Then "<Item>" is displayed as "<ItemName>"
+      | Fields | Value          |
+      | item1  | BACK TO BONDS  |
+      | item2  | Reference Code |
+      | item4  | BSB            |
+      | item5  | Account Number |
     Then I click on button with value "Submit"
     And I wait for "2000" milliseconds
     Then I see text "The status of your Bond/s has been changed to 'Raised-Pending Payment'." displayed
@@ -788,6 +811,8 @@ Feature: Iteration 2 tests
   ########## ITERATION 3 ##################
   #################################################################################################################################
   #################################################################################################################################
+ 
+
   Scenario Outline: ARB-16, As an RBU Team Leader/Officer, I want to complete a Bond Lodgement form on the portal
     Given I want to login to portal "<PortalName>"
     And I wait for "2000" milliseconds
@@ -872,7 +897,7 @@ Feature: Iteration 2 tests
     Then I check I am on "ManageBonds" page
     Then I "check" text "Raised" displayed in table "wtBondsList"
     Then I "click" text "CheckBox" displayed in table "wtBondsList"
-    #start here
+   And I wait for "1000" milliseconds
     And I click on button with value "View Payment Info"
     Then I check I am on "Bond Payment View" page
     # check only correct responsible party is displayed
@@ -946,7 +971,7 @@ Feature: Iteration 2 tests
       | ARB        | backofficeteamleader@test.com | Support123 | LessorRadio | sfdfs           | sddsf          | sdfdf@gmail.com |  0433456673 | 217 Badger Creek Rd, Badger Creek VIC 3777 | Invalid login details. Please try again. | FirstAgency | Occupancy   |
       | ARB        | lessor2@test.com              | Support123 |             |                 |                |                 |             |                                            | Invalid login details. Please try again. | FirstAgency | Residential |
       | ARB        | lessor2@test.com              | Support123 |             |                 |                |                 |             |                                            | Invalid login details. Please try again. | FirstAgency | Occupancy   |
-
+ @RB_Regression
   Scenario Outline: ARB-38, As an RBU Team Leader/Officer, I want to Approve a Refund Request so the Bond can be refunded to the nominated parties
     Given I want to login to portal "<PortalName>"
     And I wait for "3000" milliseconds
@@ -983,7 +1008,7 @@ Feature: Iteration 2 tests
       | item1  | Refunds Raised  |
       | item2  | Refund Payments |
       | item3  | Disputes        |
-      | item4  | Claims          |
+     # | item4  | Claims          |
       | item5  | Bond No.        |
       | item6  | Date Requested  |
       | item6  | Requested By    |
@@ -1032,9 +1057,12 @@ Feature: Iteration 2 tests
     #Scenario:5
     Then I click on button with value "Approve Refund"
     And I see popup "MainContent" displayed
-    Then I switch to frame "0"
-    And I wait for "3000" milliseconds
-    Then I click on button with value "Yes"
+   
+   And I wait for "2000" milliseconds
+   Then I switch to frame "0"
+   Then I see text "Are you sure to approve this refund?" displayed
+And I click on "Yes" on popup
+  #  Then I click on button with value "Yes"
     And I wait for "1000" milliseconds
     Then I see text "Refund successfully approved." displayed
     Then I check I am on "TaskList" page

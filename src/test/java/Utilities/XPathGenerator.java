@@ -1,7 +1,9 @@
 package Utilities;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class XPathGenerator {
 
@@ -245,4 +247,16 @@ public class XPathGenerator {
 		System.out.println("xpath ::*** " + xpath);
 		return xpath;
 	}
+	
+	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	// ++++++++++++++++++++++++++++++++++Read "some" Row  of the table++++++++++++++++++++++++++++
+	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	public String xPathMakerForReadSomeRowOfSomeTable(String arg1, String arg2) {
+
+		String xpath = "//table[contains(@id,'" + arg2 + "')] //tbody//tr[' + arg1 + ']";
+	
+		return xpath;
+	   
+	}
+	
 }

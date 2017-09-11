@@ -300,7 +300,24 @@ public class StepImplementations {
 //		
 //	}
 	
-	@Given("^I capture \"(.*?)\"$")
+
+	@And("^I take a \"(.*?)\" of row \"(.*?)\" from the table \"(.*?)\"$")
+	public void i_capture_from_the_table(String arg1,String arg2, String arg3) throws Throwable {
+		if(arg1.equals("click")){
+		String myxpath = new DBUtilities(driver).xPathMakerForReadSomeRowOfSomeTable(arg2,arg3);
+		WebElement rowToBeClicked =  driver.findElement(By.xpath(myxpath));
+		rowToBeClicked.click();
+	}else if (arg1.equals("capture")){
+		String myxpath = new DBUtilities(driver).xPathMakerForReadSomeRowOfSomeTable(arg2,arg3);
+		WebElement rowToBeCaptured =  driver.findElement(By.xpath(myxpath));
+		  String captureElement = rowToBeCaptured.getText();
+			System.out.println(captureElement);
+			//this is specific case , change if required
+			Capture = captureElement.substring(0, 7);
+	}
+	}
+	
+	@And("^I capture \"(.*?)\"$")
 	public String i_capture(String arg1) throws Throwable {
 		Thread.sleep(3000);
 		if(arg1.equals("html")){
@@ -315,7 +332,6 @@ public class StepImplementations {
 			String myxpath = createXpath.xpathMakerContainsText(arg1);
 			WebElement xyz = driver.findElement(By.xpath(myxpath));
 		     String GetBondId = xyz.getText();
-			
 			Capture = GetBondId.substring(41, 48);
 			System.out.println("*****************************FINAL RESULTS*****************************" +Capture);
 		}else{

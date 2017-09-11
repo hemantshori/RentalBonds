@@ -1,13 +1,6 @@
 Feature: Wip
 
 
-
-
-
- 
-  
-
-  #ready to be included into regression once JL fixes selection issue
   @wip
   Scenario Outline: ARB-192: As an RBU Team Leader/Officer I want the ability to cancel a raised bond
     # create a new bond so that i tmay be cancelled
@@ -93,11 +86,13 @@ Feature: Wip
     And I hit Enter
     Then I check I am on "ManageBonds" page
     Then I "check" text "Raised" displayed in table "wtBondsList"
-    Then I "click" text "selectTheFirstRow" displayed in table "Bonds"
+   # Then I "click" text "selectTheFirstRow" displayed in table "Bonds"
     #remove following once JL fixes the thing on row click
-    And I wait for "20000" milliseconds
+     Then I "click" text "selectTheFirstRow" displayed in table "BondsList"
     #The RBU Team Leader/Officer successfully updates the status of a Bond from 'Raised' to 'Cancelled'
     # following is to go to "..." till and id is provided.
+       And I wait for "1000" milliseconds
+       Then I check I am on "Bond Detail" page
     Then I click on button "fa fa-fw fa-ellipsis-h fa-2x"
     And I wait for "2000" milliseconds
     Then I click on text "CANCEL BOND"
@@ -105,7 +100,6 @@ Feature: Wip
     Then I switch to frame "0"
     #Scenario :3
     Then I click on button with value "No"
-    Then I click on button with value "Yes"
     And I wait for "2000" milliseconds
     Then I click on text "CANCEL BOND"
     And I wait for "2000" milliseconds

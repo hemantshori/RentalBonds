@@ -154,7 +154,7 @@ public class StepImplementations {
 
 	@After()
 	public void tearDown() {
-	//	driver.quit();
+		driver.quit();
 	}
 	// ******************************************************************************
 
@@ -769,9 +769,10 @@ public class StepImplementations {
 
 		if (arg2.equals("selectTheFirstRow")){
 			DBUtilities createXpath = new DBUtilities(driver);
-			String checkFirstRowInTable = createXpath.xpathMakerPickFirstRowInTable(arg2, arg3);
-			
+			String checkFirstRowInTable = createXpath.xPathMakerForReadSomeRowOfSomeTable(arg2, arg3);
+			//for a change putting double click
 			driver.findElement(By.xpath(checkFirstRowInTable)).click();
+
 		}else{
 		
 		if (arg1.equals("check")) {

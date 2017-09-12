@@ -309,6 +309,7 @@ public class StepImplementations {
 		rowToBeClicked.click();
 	}else if (arg1.equals("capture")){
 		String myxpath = new DBUtilities(driver).xPathMakerForReadSomeRowOfSomeTable(arg2,arg3);
+		System.out.println("DEaling with table element " +myxpath);
 		WebElement rowToBeCaptured =  driver.findElement(By.xpath(myxpath));
 		  String captureElement = rowToBeCaptured.getText();
 			System.out.println(captureElement);

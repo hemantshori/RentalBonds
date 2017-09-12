@@ -175,7 +175,7 @@ public class XPathGenerator {
 		return xpath;
 	}
 	public String xpathMakerPickFirstRowInTable(String arg1, String arg2) {
-
+// avoid using this one as this is only because RB cursor has to be moved on LHS 
 		String xpath = "//table[contains(@id, '" + arg2 + "')]//tbody//tr[1]//td[1]";
 		System.out.println("Picking the first row from table " +arg2 +" with Xpath" + xpath);
 		return xpath;
@@ -252,8 +252,8 @@ public class XPathGenerator {
 	// ++++++++++++++++++++++++++++++++++Read "some" Row  of the table++++++++++++++++++++++++++++
 	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	public String xPathMakerForReadSomeRowOfSomeTable(String arg1, String arg2) {
-
-		String xpath = "//table[contains(@id,'" + arg2 + "')] //tbody//tr[' + arg1 + ']";
+// to be removed not working
+		String xpath = "//table[contains(@id,'" + arg2 + "')] //tbody//tr[1]";
 	
 		return xpath;
 	   

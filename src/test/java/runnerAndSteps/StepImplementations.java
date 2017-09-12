@@ -154,7 +154,7 @@ public class StepImplementations {
 
 	@After()
 	public void tearDown() {
-		driver.quit();
+		//driver.quit();
 	}
 	// ******************************************************************************
 
@@ -314,7 +314,9 @@ public class StepImplementations {
 		  String captureElement = rowToBeCaptured.getText();
 			System.out.println(captureElement);
 			//this is specific case , change if required
+			if(arg3.equals("DisputesTable")){Capture = captureElement.substring(10, 18);}else{
 			Capture = captureElement.substring(0, 7);
+	}
 	}
 	}
 	

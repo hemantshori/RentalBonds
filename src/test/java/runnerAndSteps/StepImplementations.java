@@ -307,16 +307,22 @@ public class StepImplementations {
 		String myxpath = new DBUtilities(driver).xPathMakerForReadSomeRowOfSomeTable(arg2,arg3);
 		WebElement rowToBeClicked =  driver.findElement(By.xpath(myxpath));
 		rowToBeClicked.click();
-	}else if (arg1.equals("capture")){
+	}else if(arg1.equals("capture")){
 		String myxpath = new DBUtilities(driver).xPathMakerForReadSomeRowOfSomeTable(arg2,arg3);
 		System.out.println("DEaling with table element " +myxpath);
 		WebElement rowToBeCaptured =  driver.findElement(By.xpath(myxpath));
 		  String captureElement = rowToBeCaptured.getText();
 			System.out.println(captureElement);
 			//this is specific case , change if required
-			if(arg3.equals("DisputesTable")){Capture = captureElement.substring(10, 18);}else{
-			Capture = captureElement.substring(0, 7);
-	}
+			if(arg3.equals("DisputesTable")){
+				Capture = captureElement.substring(10, 18);System.out.println(Capture);
+			if(arg2.equals("ACAT"))
+			{Capture = captureElement.substring(19, 26);System.out.println(Capture);
+			}
+			}else{
+				Capture = captureElement.substring(0, 7);
+			}
+	
 	}
 	}
 	

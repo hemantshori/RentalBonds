@@ -1,4 +1,3 @@
-
 @all
 Feature: WCAG Report generation
 
@@ -11,6 +10,7 @@ Feature: WCAG Report generation
     And I click on button "checkpaste"
     And I paste "html"
     And I click on button "validate_paste"
+    Then I wait for "2000" milliseconds
     And I capture "AC_num_of_errors"
     Then I write "Login" information to file
 
@@ -34,6 +34,7 @@ Feature: WCAG Report generation
     And I click on button "checkpaste"
     And I paste "html"
     And I click on button "validate_paste"
+    Then I wait for "2000" milliseconds
     And I capture "AC_num_of_errors"
     Then I write "Home Page" information to file
 
@@ -175,7 +176,6 @@ Feature: WCAG Report generation
       | PortalName | PortalName2 | email                | Password   | Message                                  |
       | ARB        | AC CHECKER  | agentadmin2@test.com | Support123 | Invalid login details. Please try again. |
 
-
   Scenario Outline: Profile Details
     Given I want to login to portal "<PortalName>"
     And I check I am on "Login" page
@@ -226,7 +226,6 @@ Feature: WCAG Report generation
       | PortalName | PortalName2 | email                | Password   | Message                                  |
       | ARB        | AC CHECKER  | agentadmin2@test.com | Support123 | Invalid login details. Please try again. |
 
-
   Scenario Outline: Password Change
     Given I want to login to portal "<PortalName>"
     And I check I am on "Login" page
@@ -251,7 +250,6 @@ Feature: WCAG Report generation
     Examples: 
       | PortalName | PortalName2 | email                | Password   | Message                                  |
       | ARB        | AC CHECKER  | agentadmin2@test.com | Support123 | Invalid login details. Please try again. |
-
 
   Scenario Outline: Manage Users
     Given I want to login to portal "<PortalName>"
@@ -278,7 +276,6 @@ Feature: WCAG Report generation
       | PortalName | PortalName2 | email                | Password   | Message                                  |
       | ARB        | AC CHECKER  | agentadmin2@test.com | Support123 | Invalid login details. Please try again. |
 
- 
   Scenario Outline: Lodge Bond Part 1
     Given I want to login to portal "<PortalName>"
     And I check I am on "Login" page
@@ -339,7 +336,6 @@ Feature: WCAG Report generation
       | PortalName | PortalName2 | email                | Password   | Message                                  |
       | ARB        | AC CHECKER  | agentadmin2@test.com | Support123 | Invalid login details. Please try again. |
 
-
   Scenario Outline: Lodge Bond Part 3
     Given I want to login to portal "<PortalName>"
     And I check I am on "Login" page
@@ -361,22 +357,22 @@ Feature: WCAG Report generation
     Then I click on button with value "Next"
     Then I check I am on "Bond Lodgement Parties" page
     And I enter the details as
-      | Fields              | Value         |
-      | TenantFirstName     | TEST          |
-      | TenantLastName      | TEST          |
-      | TenantEmail         | TEST@TEST.com |
-      | TenantPhone         |    1234567890 |
+      | Fields          | Value         |
+      | TenantFirstName | TEST          |
+      | TenantLastName  | TEST          |
+      | TenantEmail     | TEST@TEST.com |
+      | TenantPhone     |    1234567890 |
       #| TenantAccountName   | TEST          |
       #| TenantBSB           |        123456 |
       #| TenantAcctNum       |        123456 |
-      | LessorFirstName     | TEST          |
-      | LessorLastName      | TEST          |
-      | LessorEmail         | TEST@TeST.com |
-      | LessorPhone         |    1234567890 |
-      | AgencyName         |    1234567890 |
-      #| LessorAccountName   | TEST          |
-      #| LessorBSB           |        123456 |
-      #| LessorAccountNumber |        123456 |
+      | LessorFirstName | TEST          |
+      | LessorLastName  | TEST          |
+      | LessorEmail     | TEST@TeST.com |
+      | LessorPhone     |    1234567890 |
+      | AgencyName      |    1234567890 |
+    #| LessorAccountName   | TEST          |
+    #| LessorBSB           |        123456 |
+    #| LessorAccountNumber |        123456 |
     Then I click on button with value "Next"
     Then I check I am on "Bond Lodgement Summary" page
     And I capture "html"
@@ -415,22 +411,22 @@ Feature: WCAG Report generation
     Then I click on button with value "Next"
     Then I check I am on "Bond Lodgement Parties" page
     And I enter the details as
-      | Fields              | Value         |
-      | TenantFirstName     | TEST          |
-      | TenantLastName      | TEST          |
-      | TenantEmail         | TEST@TEST.com |
-      | TenantPhone         |    1234567890 |
+      | Fields          | Value         |
+      | TenantFirstName | TEST          |
+      | TenantLastName  | TEST          |
+      | TenantEmail     | TEST@TEST.com |
+      | TenantPhone     |    1234567890 |
       #| TenantAccountName   | TEST          |
       #| TenantBSB           |        123456 |
       #| TenantAcctNum       |        123456 |
-      | LessorFirstName     | TEST          |
-      | LessorLastName      | TEST          |
-      | LessorEmail         | TEST@TeST.com |
-      | LessorPhone         |    1234567890 |
-      | AgencyName         |    1234567890 |
-      #| LessorAccountName   | TEST          |
-      #| LessorBSB           |        123456 |
-      #| LessorAccountNumber |        123456 |
+      | LessorFirstName | TEST          |
+      | LessorLastName  | TEST          |
+      | LessorEmail     | TEST@TeST.com |
+      | LessorPhone     |    1234567890 |
+      | AgencyName      |    1234567890 |
+    #| LessorAccountName   | TEST          |
+    #| LessorBSB           |        123456 |
+    #| LessorAccountNumber |        123456 |
     Then I click on button with value "Next"
     Then I check I am on "Bond Lodgement Summary" page
     Then I click on button "ConfirmCheck"
@@ -471,23 +467,23 @@ Feature: WCAG Report generation
     Then I select "Separated House" from "DwellingType"
     Then I click on button with value "Next"
     Then I check I am on "Bond Lodgement Parties" page
-     And I enter the details as
-      | Fields              | Value         |
-      | TenantFirstName     | TEST          |
-      | TenantLastName      | TEST          |
-      | TenantEmail         | TEST@TEST.com |
-      | TenantPhone         |    1234567890 |
+    And I enter the details as
+      | Fields          | Value         |
+      | TenantFirstName | TEST          |
+      | TenantLastName  | TEST          |
+      | TenantEmail     | TEST@TEST.com |
+      | TenantPhone     |    1234567890 |
       #| TenantAccountName   | TEST          |
       #| TenantBSB           |        123456 |
       #| TenantAcctNum       |        123456 |
-      | LessorFirstName     | TEST          |
-      | LessorLastName      | TEST          |
-      | LessorEmail         | TEST@TeST.com |
-      | LessorPhone         |    1234567890 |
-      | AgencyName         |    1234567890 |
-      #| LessorAccountName   | TEST          |
-      #| LessorBSB           |        123456 |
-      #| LessorAccountNumber |        123456 |
+      | LessorFirstName | TEST          |
+      | LessorLastName  | TEST          |
+      | LessorEmail     | TEST@TeST.com |
+      | LessorPhone     |    1234567890 |
+      | AgencyName      |    1234567890 |
+    #| LessorAccountName   | TEST          |
+    #| LessorBSB           |        123456 |
+    #| LessorAccountNumber |        123456 |
     Then I click on button with value "Next"
     Then I check I am on "Bond Lodgement Summary" page
     Then I click on button "ConfirmCheck"

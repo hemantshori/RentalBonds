@@ -25,6 +25,7 @@ import org.apache.log4j.xml.DOMConfigurator;
 import org.json.JSONException;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.Platform;
@@ -72,7 +73,7 @@ public class StepImplementations {
 	static String URLCaptured;
 	final String wcag_subdirectory = "wcagoutput";
 	final String screenshot_subdirectory = "screenshots";
-	BROWSER browser_type = BROWSER.CHROME; // change this to change what browser is used
+	BROWSER browser_type = BROWSER.FIREFOX; // change this to change what browser is used
 	Hashtable<String, Integer> summary = new Hashtable<String, Integer>();
 	
 	public void logit()
@@ -264,41 +265,41 @@ public class StepImplementations {
 	//******************************************* WCAG Stuff *************************************************************
 
 	
-//	@Given("^I paste \"(.*?)\"$")
-//	public void i_paste(String arg1) throws Throwable {
-//		
-//		if(arg1.equals("BondId"))
-//		{
-//			
-//		}else{
-//			
-//		  System.out.println("Source code: " + sourceCode);
-//		
-//	      StringSelection selection = new StringSelection(sourceCode);
-//	      Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-//			
-//			// get the what was originally in the clipboard so that it can be restored later
-//			String oldContent = (String) clipboard.getData(DataFlavor.stringFlavor);
-//			
-//			// set the clipboard contents as what was captured in the previous step(s)
-//			clipboard.setContents(selection, selection);
-//			
-//
-//			// find the element
-//			WebElement inputField =  driver.findElement(By.xpath("//*[contains(@id, 'checkpaste')]"));
-//			inputField.click();
-//			
-//			//paste the captured stuff
-//			Actions actions = new Actions(driver);
-//			actions.keyDown(Keys.LEFT_CONTROL).sendKeys(String.valueOf('\u0076')).perform(); // this works on Firefox
-//			//actions.sendKeys(Keys.chord(Keys.LEFT_CONTROL, Keys.getKeyFromUnicode('V'))).build().perform();
-//			
-//
-//			StringSelection oldSelection = new StringSelection(oldContent);
-//			clipboard.setContents(oldSelection, oldSelection);
-//		}
-//		
-//	}
+	@Given("^I paste \"(.*?)\"$")
+	public void i_paste(String arg1) throws Throwable {
+		
+		if(arg1.equals("BondId"))
+		{
+			
+		}else{
+			
+		  System.out.println("Source code: " + sourceCode);
+		
+	      StringSelection selection = new StringSelection(sourceCode);
+	      Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+			
+			// get the what was originally in the clipboard so that it can be restored later
+			String oldContent = (String) clipboard.getData(DataFlavor.stringFlavor);
+			
+			// set the clipboard contents as what was captured in the previous step(s)
+			clipboard.setContents(selection, selection);
+			
+
+			// find the element
+			WebElement inputField =  driver.findElement(By.xpath("//*[contains(@id, 'checkpaste')]"));
+			inputField.click();
+			
+			//paste the captured stuff
+			Actions actions = new Actions(driver);
+			actions.keyDown(Keys.LEFT_CONTROL).sendKeys(String.valueOf('\u0076')).perform(); // this works on Firefox
+			//actions.sendKeys(Keys.chord(Keys.LEFT_CONTROL, Keys.getKeyFromUnicode('V'))).build().perform();
+			
+
+			StringSelection oldSelection = new StringSelection(oldContent);
+			clipboard.setContents(oldSelection, oldSelection);
+		}
+		
+	}
 	
 
 	@And("^I take a \"(.*?)\" of row \"(.*?)\" from the table \"(.*?)\"$")
@@ -345,10 +346,11 @@ public class StepImplementations {
 			System.out.println("*****************************FINAL RESULTS*****************************" +Capture);
 		}else{
 			DBUtilities createXpath = new DBUtilities(driver);
-			String myxpath = createXpath.xpathMakerById(arg1);
+			//*[@id='38']
+			String myxpath = createXpath.xpathMakerByExactId(arg1);
+			//String myxpath = createXpath.xpathMakerById(arg1);
 			System.out.println(myxpath);
-			
-			WebElement xyz = driver.findElement(By.xpath(myxpath));
+					WebElement xyz = driver.findElement(By.xpath(myxpath));
 			Capture= xyz.getText();
 			System.out.println("*****************************FINAL RESULTS*****************************\n");
 			System.out.println(URLCaptured + " HAS " + Capture + " WCAG ERRORS\n");
@@ -616,17 +618,17 @@ public class StepImplementations {
 	}
 	
 //wrong step......dont hard code
-//	@Then("^I click on object with xpath \"(.*?)\"$")
-//	public void i_click_on_object_with_xpath(String arg1) throws Throwable{
-//		try {
-//			WebElement object = driver.findElement(By.xpath(arg1));
-//			object.click();
-//		}
-//		catch (Exception e){
-//			e.printStackTrace();
-//		}
-//	}
-//	
+	@Then("^I click on object with xpath \"(.*?)\"$")
+	public void i_click_on_object_with_xpath(String arg1) throws Throwable{
+		try {
+			WebElement object = driver.findElement(By.xpath(arg1));
+			object.click();
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	@Then("^I check \"(.*?)\" exists$")
 	public void i_check_exists(String arg1) throws Throwable {
 		DBUtilities checkElementDisplayed = new DBUtilities(driver);

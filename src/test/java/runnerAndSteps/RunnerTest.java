@@ -12,7 +12,7 @@ import cucumber.api.junit.Cucumber;
 // ************************************** CSS Portal as on 17/10/2016
 // OCT***********************************
 
-(format = { "pretty", "html:target/html/result.html" }, tags = { "@wip" },
+(format = { "pretty", "html:target/html/result.html" }, tags = { "@all" },
 		// *********************for
 		// SHAKEOUT*************************************
 		// features = "src/test/resource/com/GESSIT/SanityTestScript.feature")
@@ -23,12 +23,12 @@ import cucumber.api.junit.Cucumber;
 // ****************for Regression****************************
 //features = "src/test/resource/com/RentalBonds/Iteration2.feature")
 //features = "src/test/resource/com/RentalBonds/Iteration1Tests.feature")
-//features = "src/test/resource/com/RentalBonds/WCAG.feature")
+features = "src/test/resource/com/RentalBonds/WCAG.feature")
 
 
 
 //****************for WIP****************************
- features = "src/test/resource/com/RentalBonds/wip.feature")
+ //features = "src/test/resource/com/RentalBonds/wip.feature")
 
 
 

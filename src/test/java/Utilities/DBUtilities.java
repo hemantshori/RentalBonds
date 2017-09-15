@@ -1024,7 +1024,9 @@ public class DBUtilities extends XPathGenerator {
 			String name = data.get(i).get(1);
 		
 				// String myxpath = createXpath.xpathMakerById(name);
-				String myxpath = new DBUtilities(driver).xpathMakerContainsText(name);
+			//under test 14/9/17 remove if all is well
+				//String myxpath = new DBUtilities(driver).xpathMakerContainsText(name);
+			String myxpath = new DBUtilities(driver).xpathMaker(name);
 				Log.info("and element............" + myxpath + "is displayed successfully");
 			
 				Assert.assertTrue(" Varification failede as " + myxpath + "NOT FOUND",

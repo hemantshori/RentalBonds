@@ -1343,9 +1343,12 @@ Scenario Outline: ARB-434  :	As an RBU Team Leader/Officer, I want to view a lis
     And I hit Enter
     Then I see text "$" displayed
     And I hit Enter
+    #TO add search by ACAT number....currently at defect
+    And I take a "capture" of row "ACAT" from the table "DisputesTable"
+     #Scenario 4
+    And I clear "SearchInput" of content
+    And I paste "ACAT_ORDER_NO" value in "SearchInput"
 
     Examples: 
       | PortalName | Password   | email                |
       | ARB        | Support123 | rbuteamleader1@test.com |
-
-    

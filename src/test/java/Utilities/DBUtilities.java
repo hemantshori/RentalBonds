@@ -34,15 +34,12 @@ public class DBUtilities extends XPathGenerator {
 		super(dr);
 	}
 
-	
 	private static final Logger Log = Logger.getLogger(StepImplementations.class.getName());
 
-	
-	public void logit()
-	{
+	public void logit() {
 		DOMConfigurator.configure("log4j.xml");
 	}
-	
+
 	// following will take 2 args from cucumber and one from page and then
 	// compare both messages
 	public static void checkElement(String arg1, String arg2) {
@@ -78,66 +75,59 @@ public class DBUtilities extends XPathGenerator {
 		}
 
 	}
+	
+	// following will only click element which is dispalyed on UI and wont get confused with hidden element.
+	
+	
 
 	// following will check if the text element exist on the screen
-	public void checkTextElementPresent(String arg1) {
+	public String checkTextElementPresent(String arg1) {
 
 		DBUtilities checkElementDisplayed = new DBUtilities(driver);
 		String myxpath = checkElementDisplayed.xpathMakerContainsText(arg1);
+		System.out.println("Looking for ..... " + myxpath);
 		Assert.assertTrue(driver.findElement(By.xpath(myxpath)).isDisplayed());
-
-		// List<WebElement> list =
-		// driver.findElements(By.xpath("//*[contains(text(),'" + arg1 +
-		// "')]"));
-		//
-		// System.out.println("looking for text " +list);
-		// Assert.assertTrue("Text not found!", list.size() > 0);
-
 		System.out.println("***Page Element " + arg1 + " is displayed successfully***");
+		return myxpath;
 	}
 
 	// following will check if the text element does NOT exist on the screen
 	public void checkTextElementAbsent(String arg1) {
 
-		try{
-		//this will check even the hidden elements that are not displayed on UI
-		DBUtilities checkElementDisplayed = new DBUtilities(driver);
-		String myxpath = checkElementDisplayed.xpathMakerContainsText(arg1);
-		int x = driver.findElement(By.xpath(myxpath)).getLocation().getX();
-		int y = driver.findElement(By.xpath(myxpath)).getLocation().getY();
-		
-		Log.info("Coordinates for absent element are " +x +" and " +y);
-		Assert.assertEquals("As expected element is not present on screen", 0,x);
-		 } catch (Exception e) {
-			 
-			  e.printStackTrace();
-			  Log.info("UNEXPECTED VALUE" +arg1 +" IS SHOWN ON SCREEN");
-		 }
-	}
+		try {
+			// this will check even the hidden elements that are not displayed
+			// on UI
+			DBUtilities checkElementDisplayed = new DBUtilities(driver);
+			String myxpath = checkElementDisplayed.xpathMakerContainsText(arg1);
+			int x = driver.findElement(By.xpath(myxpath)).getLocation().getX();
+			int y = driver.findElement(By.xpath(myxpath)).getLocation().getY();
 
-	
+			Log.info("Coordinates for absent element are " + x + " and " + y);
+			Assert.assertEquals("As expected element is not present on screen", 0, x);
+		} catch (Exception e) {
+			Log.info("UNEXPECTED VALUE" + arg1 + " IS SHOWN ON SCREEN");
+		}
+	}
 
 	public void checkBoxClick(String arg1) throws InterruptedException {
 		DBUtilities createXpath = new DBUtilities(driver);
 		String myxpath = createXpath.xpathMakerContainsText(arg1);
 		System.out.println("Clicking on the checkbox " + myxpath);
-		//driver.findElement(By.xpath(myxpath)).click();
-//		*****************8
-		
-		  WebElement element = driver.findElement(By.xpath(myxpath));
+		// driver.findElement(By.xpath(myxpath)).click();
+		// *****************8
 
-		    try {
-		        element.click();
-		    } catch (Exception e) {
-		    	Actions actions = new Actions(driver);
-		    	Thread.sleep(1000);
-		    	actions.keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
-		    	Thread.sleep(1000);
-		        element.click();
-		    }
-		
+		WebElement element = driver.findElement(By.xpath(myxpath));
 
-		
+		try {
+			element.click();
+		} catch (Exception e) {
+			Actions actions = new Actions(driver);
+			Thread.sleep(1000);
+			actions.keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
+			Thread.sleep(1000);
+			element.click();
+		}
+
 	}
 
 	public void checkTextElementAbsent(DataTable table) throws InterruptedException {
@@ -154,10 +144,8 @@ public class DBUtilities extends XPathGenerator {
 	}
 
 	// note: HS: following is different from checkElementPresentMessage
-	public void checkUIElementIsDisplayed(String arg1) throws InterruptedException {
-		// if (arg1.equals("Please wait while we retrieve your account...")||
-		// arg1.equals("Please contact Simply Energy on 13 88 08 to set up your
-		// Direct Debit")){
+	public String checkUIElementIsDisplayed(String arg1) throws InterruptedException {
+
 		if (arg1.equals("highcharts-tracker")) {
 			DBUtilities checkElementDisplayed = new DBUtilities(driver);
 			String myxpath = checkElementDisplayed.xpathMakerByClass(arg1);
@@ -178,6 +166,7 @@ public class DBUtilities extends XPathGenerator {
 				System.out.println("Element is Absent");
 			}
 		}
+		return arg1;
 
 	}
 
@@ -336,21 +325,21 @@ public class DBUtilities extends XPathGenerator {
 
 	public String DNT() {
 
-		DateFormat dateFormat = new SimpleDateFormat("ddMMYYYYHHmmss");
-		// get current date time with Calendar()
-		Calendar cal = Calendar.getInstance();
-		String datentime = dateFormat.format(cal.getTime());
-		System.out.println(" Current System DNT is " + datentime);
-		String truncateddatentime = datentime.substring(4);
-		System.out.println(" Truncated Current System DNT is " + datentime);
-		System.out.println(" Truncated Current System DNT is " + truncateddatentime);
-		return truncateddatentime;
+//		DateFormat dateFormat = new SimpleDateFormat("ddMMYYYYHHmmss");
+//		// get current date time with Calendar()
+//		Calendar cal = Calendar.getInstance();
+//		String datentime = dateFormat.format(cal.getTime());
+//		System.out.println(" Current System DNT is " + datentime);
+//		String truncateddatentime = datentime.substring(4);
+//		System.out.println(" Truncated Current System DNT is " + datentime);
+//		System.out.println(" Truncated Current System DNT is " + truncateddatentime);
+//		return truncateddatentime;
 
-		// DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy ");
-		// Date date = new Date();
-		// String currentDate = dateFormat.format(date);
-		// System.out.println(" Current System DNT is "+ currentDate);
-		// return currentDate;
+		 DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy ");
+		 Date date = new Date();
+		 String currentDate = dateFormat.format(date);
+		 System.out.println(" Current System DNT is "+ currentDate);
+		 return currentDate;
 
 	}
 
@@ -393,7 +382,7 @@ public class DBUtilities extends XPathGenerator {
 	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	public void readTableAndCaptureInString(String arg1) {
-		//System.out.println("Balley balley ni taur ni punjabban di");
+		// System.out.println("Balley balley ni taur ni punjabban di");
 		DBUtilities createXpath = new DBUtilities(driver);
 		String myXpath = createXpath.xpathMakerById(arg1);
 
@@ -430,21 +419,21 @@ public class DBUtilities extends XPathGenerator {
 
 	public void selectDropdownValue(String arg1, String arg2) throws InterruptedException {
 		String myxpath = new DBUtilities(driver).xpathMakerContainsText(arg1);
-		//driver.findElement(By.xpath(myxpath)).click();
+		// driver.findElement(By.xpath(myxpath)).click();
 		// disabling following as Gessit format is different
 		// String myxpath2= new DBUtilities(driver).xpathMakerById(arg2);
 		// driver.findElement(By.xpath(myxpath2)).click();
-//		************* 
+		// *************
 		WebElement element = driver.findElement(By.xpath(myxpath));
 
-	    try {
-	        element.click();
-	    } catch (Exception e) {
-	    	Actions actions = new Actions(driver);
-	    	actions.keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
-	    	
-	        element.click();
-	    }
+		try {
+			element.click();
+		} catch (Exception e) {
+			Actions actions = new Actions(driver);
+			actions.keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
+
+			element.click();
+		}
 
 	}
 
@@ -502,71 +491,71 @@ public class DBUtilities extends XPathGenerator {
 	}
 
 	// entering cucumber table values
-	public void enterCucumbertableValuesInUI (DataTable table) throws InterruptedException 
-			 {
-		
-				 	String myXpath;
-					List<List<String>> data = table.raw();
-						
-						for (int i = 1; i <data.size(); i++){
-							String name = data.get(i).get(1);
-							System.out.println("The table length is .." +data.size());	
-							
-						DBUtilities createXpath = new DBUtilities(driver);
-						if(name.equals("")){System.out.println(" Not expecting element to be present on screen so going to next step");}
-						else if(!name.equals("")){
-						try {
-							
-							  myXpath = createXpath.xpathMakerByInputId(data.get(i).get(0));
-							  System.out.println(i);
-							  System.out.println(myXpath);
-							  System.out.println("Is " + myXpath + " Interactable? " + driver.findElement(By.xpath(myXpath)).isEnabled());
-							  driver.findElement(By.xpath(myXpath)).clear();
-						  }
-						  catch (Exception e){
-							  e.printStackTrace();
-							  System.out.println("Cannot find an input field! Now trying to find a textarea field...");
-							  //myXpath = createXpath.xpathMakerByInputId(data.get(i).get(0));
-							  
-							  myXpath = createXpath.xpathMakerByTextAreaId(data.get(i).get(0));
-							  System.out.println(i);
-							  System.out.println(myXpath);
-							  driver.findElement(By.xpath(myXpath)).clear();
-						  }
-						
-					 // driver.findElement(By.xpath(myXpath)).click();
-						// disabled above as we have already clicked it before
-					// following is to make the input parameters unique to avoid duplocation error on UI
-						
-						if(myXpath.contains("OneLineAddress")||(myXpath.contains("StreetNumber"))){
-						String nameToBeEntered= data.get(i).get(1);
-						System.out.println(nameToBeEntered);
-					String dnt =	DNT();
+	public void enterCucumbertableValuesInUI(DataTable table) throws InterruptedException {
+
+		String myXpath;
+		List<List<String>> data = table.raw();
+
+		for (int i = 1; i < data.size(); i++) {
+			String name = data.get(i).get(1);
+			System.out.println("The table length is .." + data.size());
+
+			DBUtilities createXpath = new DBUtilities(driver);
+			if (name.equals("")) {
+				System.out.println(" Not expecting element to be present on screen so going to next step");
+			} else if (!name.equals("")) {
+				try {
+
+					myXpath = createXpath.xpathMakerByInputId(data.get(i).get(0));
+					System.out.println(i);
+					System.out.println(myXpath);
+					System.out.println(
+							"Is " + myXpath + " Interactable? " + driver.findElement(By.xpath(myXpath)).isEnabled());
+					driver.findElement(By.xpath(myXpath)).clear();
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.out.println("Cannot find an input field! Now trying to find a textarea field...");
+					// myXpath =
+					// createXpath.xpathMakerByInputId(data.get(i).get(0));
+
+					myXpath = createXpath.xpathMakerByTextAreaId(data.get(i).get(0));
+					System.out.println(i);
+					System.out.println(myXpath);
+					driver.findElement(By.xpath(myXpath)).clear();
+				}
+
+				// driver.findElement(By.xpath(myXpath)).click();
+				// disabled above as we have already clicked it before
+				// following is to make the input parameters unique to avoid
+				// duplocation error on UI
+
+				if (myXpath.contains("OneLineAddress") || (myXpath.contains("StreetNumber"))) {
+					String nameToBeEntered = data.get(i).get(1);
+					System.out.println(nameToBeEntered);
+					String dnt = DNT();
 					System.out.println(dnt);
-						
-						 driver.findElement(By.xpath(myXpath));
-						 String nameAfterAddingSuffix = dnt+nameToBeEntered;
-						 System.out.println(nameAfterAddingSuffix);
-						 driver.findElement(By.xpath(myXpath)).sendKeys(nameAfterAddingSuffix);
-						 }
-						else if(myXpath.contains("medicare")){
-							 String nameToBeEntered= data.get(i).get(1);
-								System.out.println(nameToBeEntered);
-							String dnt =	DNT();
-							System.out.println(dnt);
-					        driver.findElement(By.xpath(myXpath));
-								 String nameAfterAddingSuffix = nameToBeEntered+dnt;
-								 System.out.println(nameAfterAddingSuffix);
-								 driver.findElement(By.xpath(myXpath)).sendKeys(nameAfterAddingSuffix);
-							 
-						 
-						}else {
-						 driver.findElement(By.xpath(myXpath)).sendKeys(data.get(i).get(1));
-						System.out.println("Entering value in table " +myXpath +"as" +name);  
-						}
-						}
-						}
-			 }
+
+					driver.findElement(By.xpath(myXpath));
+					String nameAfterAddingSuffix = dnt + nameToBeEntered;
+					System.out.println(nameAfterAddingSuffix);
+					driver.findElement(By.xpath(myXpath)).sendKeys(nameAfterAddingSuffix);
+				} else if (myXpath.contains("medicare")) {
+					String nameToBeEntered = data.get(i).get(1);
+					System.out.println(nameToBeEntered);
+					String dnt = DNT();
+					System.out.println(dnt);
+					driver.findElement(By.xpath(myXpath));
+					String nameAfterAddingSuffix = nameToBeEntered + dnt;
+					System.out.println(nameAfterAddingSuffix);
+					driver.findElement(By.xpath(myXpath)).sendKeys(nameAfterAddingSuffix);
+
+				} else {
+					driver.findElement(By.xpath(myXpath)).sendKeys(data.get(i).get(1));
+					System.out.println("Entering value in table " + myXpath + "as" + name);
+				}
+			}
+		}
+	}
 
 	// entering cucumber table values
 	public void enterCucumbertableValuesInUIOnlyIfPresent(DataTable table) throws InterruptedException {
@@ -633,13 +622,13 @@ public class DBUtilities extends XPathGenerator {
 	public void checkPopUpMessage(String arg1, BROWSER browser_type) {
 		String popUpMessage = driver.switchTo().alert().getText();
 		System.out.println("the pop up message text is " + popUpMessage);
-		if (browser_type == BROWSER.CHROME){
+		if (browser_type == BROWSER.CHROME) {
 			Assert.assertTrue(arg1, popUpMessage.equals(arg1));
-		}
-		else if (browser_type == BROWSER.FIREFOX){
-			// Firefox has a habit of changing the popup messages automatically 
+		} else if (browser_type == BROWSER.FIREFOX) {
+			// Firefox has a habit of changing the popup messages automatically
 			// the message below is the default Firefox popup message
-			Assert.assertTrue(popUpMessage.equals("This page is asking you to confirm that you want to leave - data you have entered may not be saved."));
+			Assert.assertTrue(popUpMessage.equals(
+					"This page is asking you to confirm that you want to leave - data you have entered may not be saved."));
 		}
 	}
 
@@ -1012,9 +1001,8 @@ public class DBUtilities extends XPathGenerator {
 		return myElement;
 	}
 	// xpathMakerEditByRowIndex
-	
-	
-//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+	// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 	public void checkElementPresentOnScreen(DataTable table) throws InterruptedException {
 		Thread.sleep(3000);
 		List<List<String>> data = table.raw();
@@ -1022,15 +1010,34 @@ public class DBUtilities extends XPathGenerator {
 		for (int i = 1; i < data.size(); i++) {
 
 			String name = data.get(i).get(1);
-		
-				// String myxpath = createXpath.xpathMakerById(name);
-			//under test 14/9/17 remove if all is well
-				//String myxpath = new DBUtilities(driver).xpathMakerContainsText(name);
-			String myxpath = new DBUtilities(driver).xpathMaker(name);
+			System.out.println("Value looking for is " + name);
+
+			// String myxpath = createXpath.xpathMakerById(name);
+			// under test 14/9/17 remove if all is well...no
+			if (name.equals("")) {
+				String myxpath = new DBUtilities(driver).xpathMakerContainsText(name);
 				Log.info("and element............" + myxpath + "is displayed successfully");
-			
+
 				Assert.assertTrue(" Varification failede as " + myxpath + "NOT FOUND",
 						driver.findElement(By.xpath(myxpath)).isDisplayed());
+			} else {
+// These changes were done to ensure hidden elements are not generating the false results & element is displayed on screen.
+				
+				String myxpath = new DBUtilities(driver).xpathMaker(name);
+				System.out.println(myxpath);
+				List<WebElement> displayedOnScreen = driver.findElements(By.xpath(myxpath));
+				int size = displayedOnScreen.size();
+				if(size>0)
+				{
+					Log.info("and element............" + myxpath + "is displayed successfully");
+				}
+				else{
+				Log.info("and element............" + myxpath + "is NOT displayed ");
+
+				Assert.assertTrue(" Varification failede as " + myxpath + "NOT FOUND",
+						driver.findElement(By.xpath(myxpath)).isDisplayed());
+			}
+			}
 		}
 	}
 
@@ -1059,7 +1066,7 @@ public class DBUtilities extends XPathGenerator {
 	public void checkUIElementTEXTIsDisplayed(String arg1) throws InterruptedException {
 		DBUtilities checkElementDisplayed = new DBUtilities(driver);
 		// String myxpath=checkElementDisplayed.xpathMaker(arg1);
-		String myxpath = checkElementDisplayed.xpathMakerContainsText(arg1); 
+		String myxpath = checkElementDisplayed.xpathMakerContainsText(arg1);
 		System.out.println("checking for text " + myxpath);
 
 		driver.getPageSource().contains(arg1);
@@ -1128,6 +1135,5 @@ public class DBUtilities extends XPathGenerator {
 		}
 
 	}
-
 
 }

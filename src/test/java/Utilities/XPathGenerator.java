@@ -1,6 +1,5 @@
 package Utilities;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -50,6 +49,7 @@ public class XPathGenerator {
 		System.out.println("xpath ::*** " + xpath);
 		return xpath;
 	}
+
 	public String xpathMakerByLabelContainsText(String buttonName) {
 		String xpath = "//label[contains(text(), '" + buttonName + "')]";
 		System.out.println("xpath ::*** " + xpath);
@@ -71,11 +71,11 @@ public class XPathGenerator {
 		String xpath = "(//*[contains(text(),'" + buttonName + "')])[2]";
 		return xpath;
 	}
+
 	public String xpathMakerContainsText1stOption(String buttonName) {
 		String xpath = "(//*[contains(text(),'" + buttonName + "')])[1]";
 		return xpath;
 	}
-
 
 	public String xpathMakerContainsID2ndOption(String arg1) {
 		String xpath = "(//input[contains(@id, '" + arg1 + "')])[2]";
@@ -174,10 +174,12 @@ public class XPathGenerator {
 		System.out.println(" its " + xpath);
 		return xpath;
 	}
+
 	public String xpathMakerPickFirstRowInTable(String arg1, String arg2) {
-// avoid using this one as this is only because RB cursor has to be moved on LHS 
+		// avoid using this one as this is only because RB cursor has to be
+		// moved on LHS
 		String xpath = "//table[contains(@id, '" + arg2 + "')]//tbody//tr[1]//td[1]";
-		System.out.println("Picking the first row from table " +arg2 +" with Xpath" + xpath);
+		System.out.println("Picking the first row from table " + arg2 + " with Xpath" + xpath);
 		return xpath;
 	}
 
@@ -247,16 +249,21 @@ public class XPathGenerator {
 		System.out.println("xpath ::*** " + xpath);
 		return xpath;
 	}
-	
+
 	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	// ++++++++++++++++++++++++++++++++++Read "some" Row  of the table++++++++++++++++++++++++++++
+	// ++++++++++++++++++++++++++++++++++Read "some" Row of the
+	// table++++++++++++++++++++++++++++
 	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	public String xPathMakerForReadSomeRowOfSomeTable(String arg1, String arg2) {
-// to be removed not working
-		String xpath = "//table[contains(@id,'" + arg2 + "')] //tbody//tr[1]";
-	
+		String xpath = "//table[contains(@id,'" + arg2 + "')] //tbody//tr[" + arg1 + "]";
 		return xpath;
-	   
+
 	}
-	
+
+	public String xPathMakerForSomeElementOfSomeRowOfSomeTable(int arg1, int arg2, String arg3) {
+		String xpath = "//table[contains(@id,'" + arg3 + "')] //tbody//tr[" + arg2 + "]//td[" + arg1 + "]";
+		return xpath;
+
+	}
+
 }

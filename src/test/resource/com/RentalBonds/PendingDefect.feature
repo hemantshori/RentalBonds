@@ -125,3 +125,184 @@ Then I "click" text "selectTheFirstRow" displayed in table "RefundRaisedTable"
     Examples: 
       | PortalName | email                | Password   | email_2                 | BondId  |
       | ARB        | agentadmin2@test.com | Support123 | rbuteamleader1@test.com | 1000088 |
+      
+      
+      
+      
+      Scenario Outline: ARB-401  :	 As an RBU Team Leader/Officer, I want to enter the details of a 'Lodged' Bond from BMS so that BMS can be decommissioned in future
+    Given I want to login to portal "<PortalName>"
+    And I wait for "2000" milliseconds
+    And I check I am on "Login" page
+    And I enter the details as
+      | Fields   | Value      |
+      | Email    | <email>    |
+      | Password | <Password> |
+    And I hit Enter
+    Then I check I am on "ManageBonds" page
+    And I click on text "Lodge Bond"
+    #Scenario:1
+    Then "<Item>" is displayed as "<ItemName>"
+      | Fields | Value         |
+      | item1  | Lodgement     |
+      | item2  | BMS Lodgement |
+    And I click on text "BMS Lodgement"
+    And I wait for "1000" milliseconds
+    Then I check I am on "BMS Bond Lodgement Premise" page
+    Then "<Item>" is displayed as "<ItemName>"
+      | Fields | Value                 |
+      | item1  | Bond Status           |
+      | item2  | Unclaimed             |
+      | item2  | Bond Reference Number |
+      | item2  | Date Raised           |
+    #Scenario:2, Condition1, if Lodged is selected
+    And I click on text "Lodged"
+    And I wait for "1000" milliseconds
+    Then I see text "Agent / Lessor" not displayed
+    Then I click on text "ENTER MANUAL ADDRESS"
+    And I wait for "2000" milliseconds
+    And I enter the details as
+      | Fields              | Value       |
+      | BondReferenceNumber | 12433434344 |
+      | StreetNumber        |          13 |
+      | StreetName          | Shori       |
+      | Suburb              | Kaleen      |
+      | Postcode            |        1111 |
+      | Section             |           2 |
+      | Block               |          13 |
+      | NumberOfBedrooms    |           3 |
+      | TotalBondAmount     |         400 |
+      | WeeklyRentalAmount  |         400 |
+    Then I select "Separated House" from "DwellingType"
+    And I select "Residential" from "OccupancyType"
+    Then I click on button with value "Next"
+    #Scenario:2
+    Then I see text "BSB Number" not displayed
+    Then I see text "Account Number" not displayed
+    Then I click on text "Back"
+    Then I check I am on "BMS Bond Lodgement Premise" page
+    Then I click on text "Unclaimed"
+    Then I click on button with value "Next"
+    Then I check I am on "BMS Bond Lodgement Tenants" page
+    #Scenario:2, Condition1, if Unclaimed is selected, bank details should be visible
+    Then "<Item>" is displayed as "<ItemName>"
+      | Fields | Value               |
+      | item1  | BSB Number          |
+      | item2  | Account Number      |
+      | item2  | Account Holder Name |
+    #Scenario:3
+    Then I click on button with value "Next"
+    And I wait for "1000" milliseconds
+    #defect 579, enable following step once fixed....fixed
+     Then I see text "Required fields have not been completed." displayed
+    #Scenario :4
+    Then I select "DOG & CO PTY LTD" from "AgencyNameDrop"
+    And I wait for "500" milliseconds
+    Then I select "Agency Admin" from "AgentDrop"
+    And I enter the details as
+      | Fields          | Value                               |
+      | LessorFirstName | LessorFirstName                     |
+      | LessorLastName  | LessorLastName                      |
+      | LessorEmail     | LessorEmail@TEST.com                |
+      | LessorPhone     |                          1234567890 |
+      | PostalAddress   | 10 FLORA AVE, BADGER CREEK VIC 3777 |
+    #Scenario 4, Scenario 5
+    Then I click on text "Paid"
+    Then I see text "Transaction Reference" not displayed
+    Then I see text "Unclaimed Amount" not displayed
+    Then I see text "Date Refunded" not displayed
+    And I wait for "500" milliseconds
+    Then I click on text "Unclaimed"
+    Then I click on button with value "Next"
+    #ToDO...check future dates are not accepted, there is currently a task to be made by Katherine Santos
+    #once defect is fixed, add tenant field details
+    #Error message should be displayed
+    And I wait for "1000" milliseconds
+    Then I see text "Amount should be greater than 0, please try again." displayed
+    And I enter the details as
+      | Fields               | Value  |
+      | TransactionReference | 123456 |
+      | RefundAmount         |    250 |
+    Then I click on button with value "Next"
+    Then I check I am on "BMS Bond Lodgement Summary" page
+
+    Examples: 
+      | PortalName | Password   | email                   |
+      | ARB        | Support123 | rbuteamleader1@test.com |
+
+  Scenario Outline: ARB-401/2   :	 Scenario 6 onwards
+    Given I want to login to portal "<PortalName>"
+    And I wait for "2000" milliseconds
+    And I check I am on "Login" page
+    And I enter the details as
+      | Fields   | Value      |
+      | Email    | <email>    |
+      | Password | <Password> |
+    And I hit Enter
+    Then I check I am on "ManageBonds" page
+    And I click on text "Lodge Bond"
+    #Scenario:1
+    Then "<Item>" is displayed as "<ItemName>"
+      | Fields | Value         |
+      | item1  | Lodgement     |
+      | item2  | BMS Lodgement |
+    And I click on text "BMS Lodgement"
+    And I wait for "1000" milliseconds
+    Then I check I am on "BMS Bond Lodgement Premise" page
+    And I click on text "Lodged"
+    And I wait for "1000" milliseconds
+    Then I see text "Agent / Lessor" not displayed
+    Then I click on text "ENTER MANUAL ADDRESS"
+    And I wait for "2000" milliseconds
+    And I enter the details as
+      | Fields              | Value                        |
+      | BondReferenceNumber |                  12433434344 |
+      | OneLineAddress      | 12 SABA ST, BURDELL QLD 4818 |
+      | StreetNumber        |                           13 |
+      | StreetName          | Shori                        |
+      | Suburb              | Murrumbeena                  |
+      | Postcode            |                         1111 |
+      | Section             |                           12 |
+      | Block               |                           10 |
+      | NumberOfBedrooms    |                           13 |
+      | TotalBondAmount     |                          400 |
+      | WeeklyRentalAmount  |                          400 |
+    Then I select "Separated House" from "DwellingType"
+    And I select "Residential" from "OccupancyType"
+    Then I click on button with value "Next"
+    Then I click on text "Back"
+    Then I check I am on "BMS Bond Lodgement Premise" page
+    Then I click on text "Unclaimed"
+    Then I click on button with value "Next"
+    Then I check I am on "Historical Bond Tenants" page
+    #Scenario:6, add multiple tenants and check correct fields are shown.
+    And I enter the details as
+      | Fields          | Value                |
+      | TenantFirstName | TenantFirstName      |
+      | TenantLastName  | TenantLastName       |
+      | TenantEmail     | TenantEmail@TEST.com |
+      | TenantPhone     |           1234567890 |
+      | TRX_Ref         |               123123 |
+    And I wait for "1000" milliseconds
+    And I enter the details as
+      | Fields              | Value     |
+      | TenantRefundAmount  |    120.30 |
+      | TenantAccountName   | Auto Test |
+      | TenantBSB           |    456432 |
+      | TenantAccountNumber | 123123123 |
+    And I click on text "ADD TENANT"
+    And I wait for "1000" milliseconds
+    And I enter the details as
+      | Fields          | Value                |
+      | TenantFirstName | TenantFirstName      |
+      | TenantLastName  | TenantLastName       |
+      | TenantEmail     | TenantEmail@TEST.com |
+      | TenantPhone     |           1234567890 |
+      | TRX_Ref         |               123123 |
+    And I click on text "REMOVE"
+    And I see popup "MainContent" displayed
+    Then I see "Are you sure you want to remove this tenant?" displayed on popup and I click "OK"
+
+    Examples: 
+      | PortalName | Password   | email                   |
+      | ARB        | Support123 | rbuteamleader1@test.com |
+      

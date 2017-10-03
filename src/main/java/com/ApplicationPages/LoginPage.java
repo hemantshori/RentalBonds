@@ -4,8 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
 
-	public LoginPage(WebDriver dr)
-	{
-		
+	public LoginPage(WebDriver dr) {
+
 	}
 }

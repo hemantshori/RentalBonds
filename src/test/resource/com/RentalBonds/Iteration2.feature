@@ -598,7 +598,7 @@ Feature: Iteration 2 tests
     Then I check I am on "ManageBonds" page
     Then I "check" text "Raised" displayed in table "wtBondsList"
     #Then I "click" text "CheckBox" displayed in table "wtBondsList"
-    And I take a "click" of "1" element of row "1" from the table "BondsList"
+    And I take a "click" of "1" element of row "3" from the table "BondsList"
     #Scenario 1
     And I wait for "2000" milliseconds
     Then I click on button with value "View Payment Info"

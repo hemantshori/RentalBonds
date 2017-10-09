@@ -147,7 +147,7 @@ public class StepImplementations {
 
 	@After()
 	public void tearDown() {
-		// driver.quit();
+		 driver.quit();
 	}
 	// ******************************************************************************
 
@@ -337,7 +337,7 @@ public class StepImplementations {
 		Actions act = new Actions(driver);
 		//will click on Bulls eye
 		act.moveToElement(xyz, 10, 25).click().build().perform();
-		xyz.click();
+		//xyz.click();
 	}
 	
 }

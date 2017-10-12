@@ -147,7 +147,7 @@ public class StepImplementations {
 
 	@After()
 	public void tearDown() {
-		 driver.quit();
+	//	 driver.quit();
 	}
 	// ******************************************************************************
 
@@ -659,8 +659,9 @@ public class StepImplementations {
 			Log.info("Clicking on element with xpath" +myXpath);
 			Actions act = new Actions(driver);
 			//will only click on visible element
+			
 			act.moveToElement(driver.findElement(By.xpath(myXpath))).click().build().perform();
-
+			//act.click();
 		} catch (Exception e) {
 
 			System.out.println("Element is Absent SOOOOOO SCROLLING DOWN" + myXpath);
@@ -670,6 +671,7 @@ public class StepImplementations {
 			Actions act = new Actions(driver);
 			//will only click on visible element
 			act.moveToElement(driver.findElement(By.xpath(myXpath))).click().build().perform();
+			
 		}
 		Thread.sleep(1000);
 

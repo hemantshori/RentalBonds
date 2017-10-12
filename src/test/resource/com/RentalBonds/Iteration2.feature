@@ -1,4 +1,4 @@
-@RB_Regression
+
 Feature: Iteration 2 tests
 
   Scenario Outline: ARB-91: As an anonymous user E.g. Tenant who is not logged in, I want to search for a bond so that I can view details of this bond
@@ -137,7 +137,7 @@ Feature: Iteration 2 tests
       | PortalName | email                   | Password   | Message                                  | email_test                      | FirstName      | LastName       | UserEmail                |
       | ARB        | rbuteamleader1@test.com | Support123 | Invalid login details. Please try again. | ron.coldebella@dbresults.com.au | TESTAGAINAGAIN | TESTAGAINAGAIN | TEST16F@asdfasfdasdf.com |
 
-  Scenario Outline: ARB-139, ARB-137: As an RBU Team Leader, I want to reactivate a user within RBU or ACT Housing so that they can access the portal again
+   Scenario Outline: ARB-139, ARB-137: As an RBU Team Leader, I want to reactivate a user within RBU or ACT Housing so that they can access the portal again
     Given I want to login to portal "<PortalName>"
     And I wait for "6000" milliseconds
     And I check I am on "Login" page
@@ -238,6 +238,7 @@ Feature: Iteration 2 tests
     Examples: 
       | PortalName | email                   | Password   | Message                                  | email_test             |
       | ARB        | rbuteamleader1@test.com | Support123 | Invalid login details. Please try again. | aaronable@golemico.com |
+
 
   Scenario Outline: ARB-165: As an RBU Team Leader, I want to resend the activation email so that the user can activate their account and login to the portal
     Given I want to login to portal "<PortalName>"
@@ -917,7 +918,7 @@ Feature: Iteration 2 tests
     Then I click on text "I confirm that these details are correct at the time of lodgement"
     And I click on button with value "Submit"
     And I wait for "1000" milliseconds
-    Then I see text "Lodgement Complete" displayed
+    Then I see text "Bond Raised" displayed
     # capture bond ID to check bond status and then submit it
      And I capture "You have successfully raised Bond"
     Then I click on text "BACK TO BONDS"
@@ -944,6 +945,7 @@ Feature: Iteration 2 tests
       | ARB        | backofficeteamleader@test.com | Support123 | Invalid login details. Please try again. | honesurevo@mystvpn.com | ManagingAgentRadio | Managing Agent Details | DOG & CO PTY LTD | AgencyNameDrop | Agency Admin | AgentDrop |
       | ARB        | backofficeteamleader@test.com | Support123 | Invalid login details. Please try again. | honesurevo@mystvpn.com | LessorRadio        | Responsible Party      |                  |                |              |           |
  
+      
   Scenario Outline: ARB-438 As an Agent Administrator/Property Manager/Lessor/RBU Team Leader/Officer, I want to capture the lodgement 'Type' so that it can be used for Land Tax reporting purposes
     Given I want to login to portal "<PortalName>"
     And I check I am on "Login" page
@@ -1440,7 +1442,7 @@ Feature: Iteration 2 tests
     Examples: 
       | PortalName | email                         | Password   | Message                                  | email_test             | Responsible_Party  | TextOnSelection        | SelectValue1     | Dropdown1      | SelectValue2 | Dropdown2 |
       | ARB        | backofficeteamleader@test.com | Support123 | Invalid login details. Please try again. | honesurevo@mystvpn.com | ManagingAgentRadio | Managing Agent Details | DOG & CO PTY LTD | AgencyNameDrop | Agency Admin | AgentDrop |
-
+@RB_Regression
   Scenario Outline: ARB-401  :	 As an RBU Team Leader/Officer, I want to enter the details of a 'Lodged' Bond from BMS so that BMS can be decommissioned in future
     Given I want to login to portal "<PortalName>"
     And I wait for "2000" milliseconds
@@ -1476,15 +1478,16 @@ Feature: Iteration 2 tests
       | Fields              | Value                        |
       | BondReferenceNumber |                  12433434344 |
       | OneLineAddress      | 12 SABA ST, BURDELL QLD 4818 |
-      | StreetNumber        |                           13 |
-      | StreetName          | Shori                        |
-      | Suburb              | Murrumbeena                  |
-      | Postcode            |                         1111 |
-      | Section             |                           12 |
-      | Block               |                           10 |
-      | NumberOfBedrooms    |                           13 |
-      | TotalBondAmount     |                          400 |
-      | WeeklyRentalAmount  |                          400 |
+
+     | StreetNumber       |     13 |
+      | StreetName         | Shori  |
+      | Suburb             | Kaleen |
+      | Postcode           |   1111 |
+      | Section            |      2 |
+      | Block              |     13 |
+      | NumberOfBedrooms   |      3 |
+      | TotalBondAmount    |    400 |
+      | WeeklyRentalAmount |    400 |
     Then I select "Separated House" from "DwellingType"
     And I select "Residential" from "OccupancyType"
     Then I click on button with value "Next"
@@ -1506,7 +1509,7 @@ Feature: Iteration 2 tests
     Then I click on button with value "Next"
     And I wait for "1000" milliseconds
     #defect 579, enable following step once fixed
-    # Then I see text "Required fields have not been completed." displayed
+    Then I see text "Required fields have not been completed." displayed
     #Scenario :4
     Then I select "DB RESULTS PTY LTD" from "AgencyNameDrop"
     And I wait for "500" milliseconds

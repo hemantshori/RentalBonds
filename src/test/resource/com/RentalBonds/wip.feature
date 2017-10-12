@@ -1,6 +1,67 @@
 Feature: Wip
 
   @wip
+Scenario Outline: ARB-438 As an Agent Administrator/Property Manager/Lessor/RBU Team Leader/Officer, I want to capture the lodgement 'Type' so that it can be used for Land Tax reporting purposes
+    Given I want to login to portal "<PortalName>"
+    And I check I am on "Login" page
+    And I enter the details as
+      | Fields   | Value      |
+      | Email    | <email>    |
+      | Password | <Password> |
+    And I hit Enter
+    Then I click on text "Lodge Bond"
+    Then I check I am on "Bond Lodgement Premise" page
+    Then I click on text "ENTER MANUAL ADDRESS"
+    And I wait for "2000" milliseconds
+    And I enter the details as
+      | Fields             | Value                                      |
+      | OneLineAddress     | 217 Badger Creek Rd, Badger Creek VIC 3777 |
+      | StreetNumber       |                                         14 |
+      | StreetName         | Shorid                                     |
+      | Suburb             | Kaleen                                |
+      | Postcode           |                                       7777 |
+      | Section            |                                         13 |
+      | Block              |                                         2 |
+      | NumberOfBedrooms   |                                         21 |
+      | TotalBondAmount    |                                       1000 |
+      | WeeklyRentalAmount |                                       2000 |
+    Then I select "Townhouse/Semi-Detached" from "DwellingType"
+    Then I select "<OccType>" from "OccupancyType"
+    Then I click on button with value "Next"
+    Then I check I am on "Bond Lodgement Parties" page
+    And I enter the details as
+      | Fields          | Value                      |
+      | TenantFirstName | someautomated              |
+      | TenantLastName  | test                       |
+      | TenantEmail     | someautomatedtest@test.com |
+      | TenantPhone     |                 0422184033 |
+    And I click on button "<LessorRadio>"
+    And I enter the details as
+      | Fields          | Value             |
+      | LessorFirstName | <LessorFirstName> |
+      | LessorLastName  | <LessorLastName>  |
+    #And I hit Enter
+    Then I click on button with value "Next"
+    And I wait for "4000" milliseconds
+    And I enter the details as
+      | Fields        | Value           |
+      | LessorEmail   | <LessorEmail>   |
+      | LessorPhone   | <LessorPhone>   |
+      | PostalAddress | <PostalAddress> |
+    Then I click on button with value "Next"
+    And I check I am on "Bond Lodgement Summary" page
+    And I see text "<OccType>" displayed
+
+    Examples: 
+      | PortalName | email                         | Password   | LessorRadio | LessorFirstName | LessorLastName | LessorEmail     | LessorPhone | PostalAddress                              | Message                                  | AgencyName  | OccType     |
+      | ARB        | rbuteamleader1@test.com       | Support123 | LessorRadio | sfdfs           | sddsf          | sdfdf@gmail.com |  0433456673 | 217 Badger Creek Rd, Badger Creek VIC 3777 | Invalid login details. Please try again. | FirstAgency | Residential |
+      | ARB        | rbuteamleader1@test.com       | Support123 | LessorRadio | sfdfs           | sddsf          | sdfdf@gmail.com |  0433456673 | 217 Badger Creek Rd, Badger Creek VIC 3777 | Invalid login details. Please try again. | FirstAgency | Occupancy   |
+      | ARB        | backofficeteamleader@test.com | Support123 | LessorRadio | sfdfs           | sddsf          | sdfdf@gmail.com |  0433456673 | 217 Badger Creek Rd, Badger Creek VIC 3777 | Invalid login details. Please try again. | FirstAgency | Residential |
+      | ARB        | backofficeteamleader@test.com | Support123 | LessorRadio | sfdfs           | sddsf          | sdfdf@gmail.com |  0433456673 | 217 Badger Creek Rd, Badger Creek VIC 3777 | Invalid login details. Please try again. | FirstAgency | Occupancy   |
+      | ARB        | lessor2@test.com              | Support123 |             |                 |                |                 |             |                                            | Invalid login details. Please try again. | FirstAgency | Residential |
+      | ARB        | lessor2@test.com              | Support123 |             |                 |                |                 |             |                                            | Invalid login details. Please try again. | FirstAgency | Occupancy   |
+
+      
   Scenario Outline: ARB-394: RBU Team Leader/Officer, I want to Dispute a Refund Request so that it cannot be refunded until the dispute has been resolved
     #The RBU Team Leader/Officer successfully Disputes a Bond Refund Request Dispute full amount
     #Scenario 1: Dispute Full Amount
@@ -36,11 +97,11 @@ Feature: Wip
       | Fields | Value                                        |
       | item1  | Are you sure you want to raise this Dispute? |
     And I click on button with value "Yes"
-     #disabled because of coding issue, JL is looking into it
+    #disabled because of coding issue, JL is looking into it
     #Then "<Item>" is displayed as "<ItemName>"
-     # | Fields | Value                                                                             |
-     # | item1  | Dispute Raised                                                                    |
-     # | item2  | The funds not disputed have been transferred to Refund Payments awaiting release. |
+    # | Fields | Value                                                                             |
+    # | item1  | Dispute Raised                                                                    |
+    # | item2  | The funds not disputed have been transferred to Refund Payments awaiting release. |
     Then I wait for "1000" milliseconds
     #Scenario 2: Dispute Partial Amount
     Then I click on text "BACK TO TASKS"
@@ -58,8 +119,8 @@ Feature: Wip
     Then I switch to frame "0"
     #disabled because of coding issue, JL is looking into it
     #Then "<Item>" is displayed as "<ItemName>"
-      #| Fields | Value                                        |
-      #| item1  | Are you sure you want to raise this Dispute? |
+    #| Fields | Value                                        |
+    #| item1  | Are you sure you want to raise this Dispute? |
     And I click on button with value "Yes"
     Then "<Item>" is displayed as "<ItemName>"
       | Fields | Value          |

@@ -803,33 +803,6 @@ public class StepImplementations {
 
 	}
 
-
-	@And("^I select option \"(.*?)\" from \"(.*?)\"$")
-	public void i_select_option_from(String arg1, String arg2) throws Throwable {
-
-		// following is RB special
-		if (arg1.isEmpty()) {
-			Log.info("Element is not expected to appear on screen");
-		} else if (arg1.equals("Property Manager") || arg1.equals("Agent Administrator")
-				|| arg1.equals("RBU Team Leader") || arg1.equals("RBU Officer") || arg1.equals("Housing Officer")
-				|| arg1.equals("Agency Admin")) {
-			String myxpath = PageFactory.initElements(driver, DBUtilities.class).xpathMakerContainsText1stOption(arg1);
-			String myxpath2 = PageFactory.initElements(driver, DBUtilities.class).xpathMakerById(arg2);
-			System.out.println(" looking for dropdown xpath " + myxpath);
-			driver.findElement(By.xpath(myxpath2)).click();
-			Thread.sleep(1000);
-			driver.findElement(By.xpath(myxpath)).click();
-		} else {
-			String myxpath = PageFactory.initElements(driver, DBUtilities.class).xpathMakerByOptionValue(arg1);
-			String myxpath2 = PageFactory.initElements(driver, DBUtilities.class).xpathMakerById(arg2);
-			System.out.println(" looking for dropdown xpath " + myxpath);
-			driver.findElement(By.xpath(myxpath2)).click();
-			Thread.sleep(1000);
-			driver.findElement(By.xpath(myxpath)).click();
-
-		}
-
-	}
 	// @Then("^I see element \"(.*?)\" displayed$")
 	// public void i_see_element_displayed(DataTable table) throws Throwable {
 	//

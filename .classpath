@@ -25,5 +25,13 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="UsershshoriworkspaceLog4j"/>
 	<classpathentry kind="lib" path="properties"/>
+	<classpathentry kind="lib" path="C:/Users/wpuxty/eclipse/javajars/cucumber-core-1.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wpuxty/eclipse/javajars/cucumber-html-0.2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wpuxty/eclipse/javajars/cucumber-java-1.1.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wpuxty/eclipse/javajars/cucumber-junit-1.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wpuxty/eclipse/javajars/cucumber-jvm-deps-1.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wpuxty/eclipse/javajars/cucumber-picocontainer-1.1.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wpuxty/eclipse/javajars/gherkin-2.12.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wpuxty/eclipse/javajars/junit-4.11.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

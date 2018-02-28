@@ -9,10 +9,10 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions
 
-// ************************************** CSS Portal as on 17/10/2016
-// OCT***********************************
+// ************************************** DB Operations Portal 21/11/2017
+// ***********************************
 
-(format = { "pretty", "html:target/html/result.html" }, tags = { "@wip" },
+(plugin = { "pretty", "html:target/html/result.html" }, tags = { "@InterfaceCreateNewCustomer"},
 		// *********************for
 		// SHAKEOUT*************************************
 		// features = "src/test/resource/com/GESSIT/SanityTestScript.feature")
@@ -26,8 +26,16 @@ import cucumber.api.junit.Cucumber;
 		// "src/test/resource/com/RentalBonds/Iteration1Tests.feature")
 		// features = "src/test/resource/com/RentalBonds/WCAG.feature")
 
-		// ****************for WIP****************************
-		features = "src/test/resource/com/RentalBonds/wip.feature")
+		// ****************for @InterfaceTestNew1****************************
+		// features = "src/test/resource/com/DBOperations/InterfaceLoginTest.feature")
+		// **************** @InterfaceTestNew2 *************
+		// features = "src/test/resource/com/DBOperations/InterfaceNewProject1.feature")
+		// ***************@InterfaceGPPageAccess ************************
+		// features = "src/test/resource/com/DBOperations/InterfaceGPPageAccess.feature")
+        //***************@InterfaceTestAssignments ************************
+		// features = "src/test/resource/com/DBOperations/InterfaceNewAssignments.feature")
+        //***************@InterfaceTestAssignments ************************
+		features = "src/test/resource/com/DBOperations/wip.feature")
 
 public class RunnerTest {
 

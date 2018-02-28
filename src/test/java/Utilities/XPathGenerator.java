@@ -266,4 +266,11 @@ public class XPathGenerator {
 
 	}
 
+	// xpath for selecting an option under a Select element
+	public String xpathMakerByOptionValue(String optionValue) {
+	             String xpath = "//option[text()= '" + optionValue + "']";
+	             System.out.println("xpath ::*** " + xpath);
+	             return xpath;
+	}
+
 }
